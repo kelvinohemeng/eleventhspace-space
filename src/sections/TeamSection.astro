@@ -1,0 +1,63 @@
+---
+import { SplitTextAnim } from "../components/react/TextAnimations";
+import { cn, containerClass } from "../lib/utils";
+const containerClasses = containerClass(false);
+
+const teams = [
+  {
+    name: "Chrisben Nii",
+    title: "Photographer",
+    image: "/sample.png",
+  },
+  {
+    name: "Afrakuma",
+    title: "Social Media Manager",
+    image: "/sample.png",
+  },
+  {
+    name: "Frank",
+    title: "Photographer",
+    image: "/sample.png",
+  },
+  {
+    name: "Dove",
+    title: "Graphic Designer",
+    image: "/sample.png",
+  },
+  {
+    name: "Korea",
+    title: "Social Media Manager",
+    image: "/sample.png",
+  },
+];
+---
+
+<div class="flex flex-col gap-16 overflow-hidden pb-[120px]">
+  <div class={cn(containerClasses, `w-full pt-[80px] `)}>
+    <div class="max-w-[750px]">
+      <SplitTextAnim
+        client:load
+        text="Team Members"
+        className=" leading-[100%] font-helvetica font-[500]"
+        duration={1.5}
+        wrapper="h1"
+      />
+    </div>
+  </div>
+  <div
+    class="p-5 md:p-0 w-full flex flex-col md:flex-row items-center md:items-start justify-start gap-16 md:gap-16 h-full"
+  >
+    {
+      teams.map((team, index) => (
+        <a
+          href=""
+          class={`w-full h-[500px] md:h-[420px] md:aspect-[1/2]  flex flex-col gap-3`}
+        >
+          <div class=" w-full h-full bg-slate-700" />
+          <h5 class=" font-medium">{team.name}</h5>
+          <p>{team.title}</p>
+        </a>
+      ))
+    }
+  </div>
+</div>

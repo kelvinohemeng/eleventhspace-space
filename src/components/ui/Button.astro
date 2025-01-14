@@ -1,0 +1,23 @@
+---
+import { ArrowUpRight } from "@phosphor-icons/react";
+
+const { title = "Learn more", href = "/" } = Astro.props;
+
+let text = "text";
+---
+
+<a href={href}>
+  <button
+    class="text-e-lg text-white bg-black full flex gap-3 items-center px-6 py-4 rounded-full"
+  >
+    <span>{title}</span>
+    <ArrowUpRight /></button
+  >
+</a>
+
+<script define:vars={{ text }}>
+  import { gsap } from "gsap";
+  text = "00Title";
+
+  console.log(text);
+</script>

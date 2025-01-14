@@ -1,0 +1,175 @@
+---
+import { cn, containerClass } from "../lib/utils";
+const containerClasses = containerClass(false);
+
+const testimonials = [
+  {
+    title: "accommodating",
+    image: "/sample.png",
+  },
+  {
+    title: "interactive",
+    image: "/sample.png",
+  },
+  {
+    title: "creative",
+    image: "/sample.png",
+  },
+  {
+    title: "adaptive",
+    image: "/sample.png",
+  },
+  {
+    title: "quality",
+    image: "/sample.png",
+  },
+  {
+    title: "accommodating",
+    image: "/sample.png",
+  },
+  {
+    title: "interactive",
+    image: "/sample.png",
+  },
+  {
+    title: "creative",
+    image: "/sample.png",
+  },
+  {
+    title: "adaptive",
+    image: "/sample.png",
+  },
+  {
+    title: "quality",
+    image: "/sample.png",
+  },
+];
+---
+
+<div class="bg-[#E6E6E6] flex flex-col gap-11 md:gap-16 overflow-hidden">
+  <div class={cn(containerClasses, "w-full pt-10 md:pt-20")}>
+    <h6 class="min-w-full text-[#471D86]">Kind words from our clients</h6>
+  </div>
+  <div class="flex flex-col pb-12 md:pb-32 relative">
+    <div class="testimonial_track overflow-hidden">
+      <div class="testimonial_wrapper flex">
+        {
+          testimonials.map((testimonial) => (
+            <a
+              href="#"
+              class="testimonial-item flex items-center px-4 min-w-max"
+            >
+              <h2 class="hover:underline">{testimonial.title}</h2>
+              <span class="p-4">
+                <svg width="11" height="10" viewBox="0 0 11 10" fill="none">
+                  <circle cx="5.5" cy="5" r="5" fill="#471D86" />
+                </svg>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div class="testimonial_track overflow-hidden mt-2">
+      <div class="testimonial_wrapper_reverse flex">
+        {
+          testimonials.map((testimonial) => (
+            <a
+              href="#"
+              class="testimonial-item flex items-center px-4 min-w-max"
+            >
+              <h2 class="hover:underline">{testimonial.title}</h2>
+              <span class="p-4">
+                <svg width="11" height="10" viewBox="0 0 11 10" fill="none">
+                  <circle cx="5.5" cy="5" r="5" fill="#471D86" />
+                </svg>
+              </span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import gsap from "gsap";
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Clone items for infinite scroll
+    const wrappers = document.querySelectorAll(
+      ".testimonial_wrapper, .testimonial_wrapper_reverse"
+    );
+    wrappers.forEach((wrapper) => {
+      const items = wrapper.querySelectorAll(".testimonial-item");
+      items.forEach((item) => {
+        const clone = item.cloneNode(true);
+        wrapper.appendChild(clone);
+      });
+    });
+
+    // Set up animations
+    const firstWrapper = document.querySelector(".testimonial_wrapper");
+    const secondWrapper = document.querySelector(
+      ".testimonial_wrapper_reverse"
+    );
+
+    // Calculate the width to move based on the content
+    const getScrollDistance = (wrapper: any) => {
+      const items = wrapper.querySelectorAll(".testimonial-item");
+      const itemWidth = items[0].offsetWidth;
+      return -(itemWidth * (items.length / 2)); // Divide by 2 because we cloned the items
+    };
+
+    // Create GSAP timelines
+    const tl1 = gsap.timeline({ repeat: -1 });
+    const tl2 = gsap.timeline({ repeat: -1 });
+
+    // First row animation
+    tl1.to(firstWrapper, {
+      x: () => getScrollDistance(firstWrapper),
+      duration: 50,
+      ease: "none",
+    });
+
+    // Second row animation (starts from -20%)
+    gsap.set(secondWrapper, { x: "-20%" });
+    tl2.to(secondWrapper, {
+      x: () => `${getScrollDistance(secondWrapper)}px`,
+      duration: 30,
+      ease: "none",
+    });
+
+    // Hover handlers for first row
+    firstWrapper?.addEventListener("mouseenter", () => {
+      tl1.pause();
+    });
+
+    firstWrapper?.addEventListener("mouseleave", () => {
+      tl1.play();
+    });
+
+    // Hover handlers for second row
+    secondWrapper?.addEventListener("mouseenter", () => {
+      tl2.pause();
+    });
+
+    secondWrapper?.addEventListener("mouseleave", () => {
+      tl2.play();
+    });
+
+    // Handle resize
+    window.addEventListener("resize", () => {
+      tl1.invalidate();
+      tl2.invalidate();
+
+      // Reset positions and restart animations
+      gsap.set(firstWrapper, { x: 0 });
+      gsap.set(secondWrapper, { x: "-20%" });
+
+      tl1.restart();
+      tl2.restart();
+    });
+  });
+</script>

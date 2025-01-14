@@ -1,0 +1,15 @@
+---
+import { slugify } from "../../lib/utils";
+
+export async function getStaticPaths() {
+  const paths = await fetch("https://example.com/api/paths");
+  return [
+    {
+      params: { project: slugify("Reference Docs") },
+      props: { name: "Reference Docs" },
+    },
+  ];
+}
+
+const { project } = Astro.params;
+---

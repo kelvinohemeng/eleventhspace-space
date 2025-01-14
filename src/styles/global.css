@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  .display-size {
+    @apply text-e-10xl leading-[120%] lg:leading-[140%] tracking-tighter lg:text-e-15xl;
+  }
+  h1,
+  .heading-1 {
+    @apply text-e-10xl lg:text-e-12xl;
+  }
+  h2,
+  .heading-2 {
+    @apply text-e-7xl lg:text-e-11xl;
+  }
+  h3,
+  .heading-3 {
+    @apply text-e-8xl lg:text-e-10xl;
+  }
+  h4,
+  .heading-4 {
+    @apply text-e-9xl;
+  }
+  h5,
+  .heading-5 {
+    @apply text-e-8xl;
+  }
+  h6,
+  .heading-6 {
+    @apply text-e-4xl;
+  }
+  p,
+  .p {
+    @apply text-e-lg;
+  }
+
+  html,
+  body,
+  #root {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Helvetica";
+  }
+
+  .spacer {
+    display: inline-block;
+    width: 1.5rem; /* Adjust this to control spacing */
+  }
+}

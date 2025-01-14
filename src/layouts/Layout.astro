@@ -1,22 +1,41 @@
+---
+const { title = "not set", showPreloaderBol = true } = Astro.props;
+
+import { ClientRouter } from "astro:transitions";
+import PreLoader from "../components/PreLoader.astro";
+import Header from "../components/ui/Header.astro";
+import "../styles/global.css";
+import Footer from "../components/ui/Footer.astro";
+import ReactLoader from "../components/react/ReactLoader";
+const showPreloader = showPreloaderBol; // Set this dynamically based on loading state
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <ClientRouter />
+    <title>{title}</title>
+  </head>
+  <body class="h-full">
+    <!-- <PreLoader hasPreloader={showPreloader} /> -->
+    <!-- <ReactLoader client:load /> -->
+    <Header />
+    <main class="w-full h-full pt-[10vh]">
+      <slot />
+      <Footer />
+    </main>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>

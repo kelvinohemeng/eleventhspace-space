@@ -1,0 +1,72 @@
+---
+const { text, className, target } = Astro.props;
+import { cn } from "../../lib/utils";
+---
+
+<div>
+  <div
+    class={cn("overflow-hidden text-anim-main", className)}
+    data-target={target}
+  >
+    <h1 class={" header-animation text-left"}>{text}</h1>
+  </div>
+</div>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const texts = document.querySelectorAll(".header-animation");
+  const textParent = document.querySelector(".text-anim-main");
+
+  //@ts-ignore
+  const targetSelector = textParent.getAttribute("data-target");
+
+  textParent?.classList.add(`${targetSelector}`);
+
+  texts.forEach((text: any) => {
+    const strText: any = text.textContent;
+    const splitText = strText.split(" ");
+
+    text.textContent = "";
+
+    splitText.forEach((char: string, index: number) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.classList.add(
+        "wsc",
+        "text-e-15xl",
+        "leading-[100%]",
+        "font-helvetica",
+        "font-[500]",
+        "inline-block"
+      );
+      text.appendChild(span);
+
+      if (index < splitText.length - 1) {
+        const spacerSpan = document.createElement("span");
+        spacerSpan.textContent = "\u00A0"; // Non-breaking space
+        spacerSpan.classList.add("spacer");
+        text.appendChild(spacerSpan);
+      }
+    });
+  });
+
+  gsap.from(".wsc", {
+    y: 200,
+    duration: 1,
+    delay: 0.1,
+    ease: "power4.out",
+    stagger: 0.1,
+    scrollTrigger: {
+      trigger: targetSelector,
+      start: "top center",
+      end: "bottom 20%",
+      markers: true,
+    },
+  });
+
+  console.log(texts, targetSelector);
+</script>

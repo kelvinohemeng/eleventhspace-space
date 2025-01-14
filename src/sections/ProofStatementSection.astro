@@ -1,0 +1,137 @@
+---
+import { SplitTextAnim } from "../components/react/TextAnimations";
+import { containerClass } from "../lib/utils";
+
+const containerClasses = containerClass(false);
+
+const ProofStatement = [
+  {
+    title: "Industries we've worked with",
+    count: "100+",
+  },
+  {
+    title: "Team Members",
+    count: "20+",
+  },
+  {
+    title: "Years of Eperience",
+    count: "5+",
+  },
+];
+---
+
+<div class="svg_section relative overflow-hidden bg-[#471D86] py-20 w-full">
+  <div class="absolute right-0 -top-[30%] max-w-[420px] hidden md:block">
+    <svg
+      width="100%"
+      height="auto"
+      viewBox="0 0 431 448"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="svg1"
+    >
+      <rect
+        width="120.737"
+        height="447.438"
+        transform="translate(154.84 0.314941)"
+        fill="#FE8B26"></rect>
+      <rect
+        width="120.737"
+        height="447.438"
+        transform="translate(0.279297 137.434) rotate(-52.9533)"
+        fill="#FE8B26"></rect>
+      <rect
+        width="120.737"
+        height="447.438"
+        transform="translate(355.514 39.1851) rotate(52.3041)"
+        fill="#FE8B26"></rect>
+    </svg>
+  </div>
+  <div
+    class="absolute -left-[10%] -bottom-[10%] transform max-w-[420px] hidden md:block"
+  >
+    <svg
+      width="100%"
+      height="auto"
+      viewBox="0 0 431 448"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="svg2"
+    >
+      <rect
+        width="120.737"
+        height="447.438"
+        transform="translate(154.84 0.314941)"
+        fill="#FE8B26"></rect>
+      <rect
+        width="120.737"
+        height="447.438"
+        transform="translate(0.279297 137.434) rotate(-52.9533)"
+        fill="#FE8B26"></rect>
+      <rect
+        width="120.737"
+        height="447.438"
+        transform="translate(355.514 39.1851) rotate(52.3041)"
+        fill="#FE8B26"></rect>
+    </svg>
+  </div>
+  <div
+    class={`${containerClasses} flex flex-col justify-between items-start gap-16 `}
+  >
+    <!-- <span class="text-e-15xl text-Red-e-red-500">eleventhspace</span> -->
+    <SplitTextAnim
+      client:load
+      text="eleventhspace"
+      className=" display-size leading-[100%] font-helvetica font-[500] text-[#FE8B26]"
+      duration={1.5}
+      wrapper="h1"
+    />
+
+    <div class="min-w-full flex flex-col md:flex-row gap-8 z-10">
+      {
+        ProofStatement.map((item) => (
+          <div class="w-full text-white p-5 md:p-20 bg-white bg-opacity-5 ">
+            <div class="max-w-[248px]">
+              <h6 class=" max-w-[150px] font-[500] leading-[120%] font-helvetica">
+                {item.title}
+              </h6>
+              <span class="text-e-13xl font-bold">{item.count}</span>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const svgAnim = gsap.timeline();
+
+  gsap.to(".svg1", {
+    rotate: 360,
+    // duration: 3,
+    ease: "circ.out",
+    scrollTrigger: {
+      trigger: ".svg1",
+      scrub: 1,
+    },
+  });
+
+  gsap.to(".svg2", {
+    rotate: -360,
+    // duration: 3,
+    ease: "circ.out",
+    scrollTrigger: {
+      trigger: ".svg2",
+      scrub: 1,
+      // start: "center center",
+      // end: "bottom top",
+      // toggleActions: "restart none restart none",
+    },
+  });
+</script>

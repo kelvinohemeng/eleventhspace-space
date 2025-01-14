@@ -1,0 +1,68 @@
+---
+import { SplitTextAnim } from "../components/react/TextAnimations";
+import Button from "../components/ui/Button.astro";
+import { cn, containerClass } from "../lib/utils";
+
+const containerClasses = containerClass(true);
+
+const projects = [
+  {
+    title: "BEntsi-Enchi",
+    image: "/sample.png",
+  },
+  {
+    title: "R&R Skincare",
+    image: "/sample.png",
+  },
+  {
+    title: "Kitea",
+    image: "/sample.png",
+  },
+];
+---
+
+<div class="">
+  <div class={cn(containerClasses, `flex gap-16 `)}>
+    <div class="w-full flex flex-col gap-16">
+      <div class="flex justify-between">
+        <div class="max-w-[750px]">
+          <div class="text-e-3xl text-Red-e-red-500 el block md:hidden">
+            Portfolio
+          </div>
+          <SplitTextAnim
+            client:load
+            text="Selected Projects"
+            className=" leading-[100%] font-helvetica font-[500]"
+            duration={1.5}
+            wrapper="h1"
+          />
+        </div>
+        <div class="space-y-2">
+          <div class="text-e-3xl text-Red-e-red-500 el hidden md:block">
+            Portfolio
+          </div>
+          <div class="hidden md:block">
+            <Button title="See All Projects" href="/" />
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full flex flex-col md:flex-row gap-16">
+        {
+          projects.map((project, index) => (
+            <a
+              href=""
+              class={`w-full x aspect-[1/1.2] h-full flex flex-col gap-3`}
+            >
+              <div class=" w-full h-full bg-slate-700" />
+              <p class="text-e-4xl">{project.title}</p>
+            </a>
+          ))
+        }
+        <div class="block md:hidden">
+          <Button title="See All Projects" href="/" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

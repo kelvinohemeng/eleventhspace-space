@@ -1,0 +1,53 @@
+---
+import { SplitTextAnim } from "../../components/react/TextAnimations";
+import { containerClass } from "../../lib/utils";
+import Button from "./Button.astro";
+import { FooterLinks } from "./FooterLinks";
+
+const containerClasses = containerClass(false);
+---
+
+<div class="bg-[#F2F2F2] min-h-[600px] .footer">
+  <div class={`${containerClasses} flex flex-col gap-32 py-[80px]`}>
+    <div class="flex flex-col md:flex-row gap-11 justify-between">
+      <div class="w-full">
+        <div class="max-w-[550px] space-y-4">
+          <SplitTextAnim
+            client:load
+            text="Let's start a conversation, Let's work together."
+            className=" !leading-[120%] font-helvetica font-medium"
+            duration={1.5}
+            wrapper="h3"
+          />
+          <div><Button title="Let's Talk" /></div>
+        </div>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-11 md:gap-40">
+        <div class="space-y-2">
+          <FooterLinks linkName="About" />
+          <FooterLinks linkName="Service" />
+          <FooterLinks linkName="Projects" />
+          <FooterLinks linkName="Contact" />
+          <FooterLinks linkName="Careers" />
+        </div>
+        <div class="space-y-2">
+          <FooterLinks linkName="LinkedIn" />
+          <FooterLinks linkName="Instagram" />
+          <FooterLinks linkName="Facebook" />
+          <FooterLinks linkName="Youtube" />
+          <FooterLinks linkName="TikTok" />
+        </div>
+      </div>
+    </div>
+
+    <SplitTextAnim
+      client:load
+      text="eleventhspace"
+      className=" display-size leading-[100%] font-helvetica font-[500] text-[#471D86]"
+      duration={1.5}
+      wrapper="h1"
+      trigger=".footer"
+    />
+  </div>
+</div>

@@ -1,0 +1,96 @@
+---
+import { SplitTextAnim } from "../components/react/TextAnimations";
+import { cn, containerClass } from "../lib/utils";
+
+const containerClasses = containerClass(false);
+---
+
+<div class="space-y-6 pt-60 w-full">
+  <div class={cn(containerClasses, "")}>
+    <div class="el-cover overflow-hidden">
+      <div class="text-e-3xl text-Red-e-red-500 el">eleventhspace</div>
+    </div>
+    <div class="max-w-[750px]">
+      <SplitTextAnim
+        client:load
+        text="We start conversations"
+        className=" display-size font-helvetica font-[500]"
+        duration={1.5}
+        wrapper="h1"
+      />
+    </div>
+  </div>
+  <div class="w-full h-full min-h-[600px] bg-slate-500"></div>
+</div>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Define the array of words you want to cycle through
+  const wordsArray = ["Akwaaba", "Welcome", "Bonjour", "Hola"];
+  let currentIndex = 0;
+
+  const eBadge: any = document.querySelector(".el"); // Target element for the animation
+
+  // Function to animate text (same animation as before)
+  const animateText = () => {
+    const word = wordsArray[currentIndex];
+    const splitText = word.split(""); // Split the current word into individual characters
+
+    // Clear existing content
+    eBadge.textContent = "";
+
+    // Add the new word as spans
+    splitText.forEach((char) => {
+      const span = document.createElement("span");
+      span.textContent = char;
+      span.classList.add("wsc", "inline-block");
+      eBadge.appendChild(span);
+    });
+
+    function onCompleteFunc() {
+      // Move to the next word in the array and repeat the animation
+      currentIndex = (currentIndex + 1) % wordsArray.length; // Cycle through words
+      animateText(); // Re-run animation for the next word
+    }
+
+    // Create a GSAP timeline for animation
+    const tl = gsap.timeline({
+      onComplete: () => {
+        onCompleteFunc();
+      },
+    });
+
+    // Animate the spans in
+    // {
+    //   splitText.length > 0 &&
+    tl.from(".el span", {
+      y: 100, // Slide in from below
+      duration: 1.5,
+      delay: 0.1,
+      ease: "power4.out",
+      stagger: {
+        amount: 0.2, // Stagger animation by 0.2 seconds
+      }, // Add stagger for individual character animation
+    }).to(
+      ".el span",
+      {
+        y: -100, // Slide out upwards
+        duration: 2,
+        delay: 0.1,
+        ease: "power4.in",
+        stagger: {
+          amount: 0.2, // Stagger animation by 0.2 seconds
+        },
+      },
+      "<+=70%"
+    );
+    // }
+  };
+
+  // Initial animation sequence
+  animateText();
+</script>

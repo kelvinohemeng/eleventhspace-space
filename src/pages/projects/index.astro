@@ -1,0 +1,31 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { client } from "../../lib/sanity/sanity";
+import { EVENTS_QUERY } from "../../lib/sanity/sanityQueries";
+
+const getData = async () => {
+  try {
+    const products = await client.fetch(EVENTS_QUERY);
+    console.log(products);
+    return products || [];
+  } catch (err) {
+    console.error("Error fetching all products: " + err);
+    return [];
+  }
+};
+
+const products = await getData();
+
+console.log(products);
+---
+
+<Layout title="About" showPreloaderBol={false}>
+  <h1 class="cursor-pointer">projects</h1>
+
+  <div>
+    <h1>All Products</h1>
+    <ul>
+      {products.map((product) => <li>{product.name}</li>)}
+    </ul>
+  </div>
+</Layout>
