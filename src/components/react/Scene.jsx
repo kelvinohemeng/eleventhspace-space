@@ -20,11 +20,7 @@ import { Leva, useControls } from "leva";
 function Loader() {
   const { progress, active } = useProgress();
 
-  return (
-    <Html center>
-      <span>{progress.toFixed(1)} % loaded</span>
-    </Html>
-  );
+  return <Html center>{progress.toFixed(1)} % loaded</Html>;
 }
 //lights
 function SpotLightWithHelper() {
@@ -187,13 +183,16 @@ export default function Scene() {
         <DirectionalLightsWithHelper />
         <PointLightsWithHelper />
         <Suspense fallback={<Loader />}>
-          {/* <ScrollControls damping={0.5} pages={3}>
-          <OrbitControls enableZoom={false} />
-          <R3f />
-        </ScrollControls> */}
           <R3f />
         </Suspense>
       </Canvas>
     </div>
   );
+}
+
+{
+  /* <ScrollControls damping={0.5} pages={3}>
+<OrbitControls enableZoom={false} />
+<R3f />
+</ScrollControls> */
 }

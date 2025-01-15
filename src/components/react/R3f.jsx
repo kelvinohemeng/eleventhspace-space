@@ -4,7 +4,7 @@ import { useFrame } from "@react-three/fiber";
 import gsap from "gsap";
 import { useAnimationStateStore } from "../../lib/zustand/store";
 
-export const R3f = ({ state }) => {
+export const R3f = () => {
   const { animation } = useAnimationStateStore();
 
   const ref = useRef();

@@ -5,5 +5,9 @@
     "**/*",
     "../sanity/lib/projects/getAllProducts.ts"
   ],
-  "exclude": ["dist"]
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
 }
