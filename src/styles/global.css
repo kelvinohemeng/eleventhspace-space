@@ -4,7 +4,7 @@
 
 @layer base {
   .display-size {
-    @apply text-e-10xl leading-[120%] lg:leading-[140%] tracking-tighter lg:text-e-15xl;
+    @apply text-e-10xl leading-[120%] lg:leading-[100%] tracking-tighter lg:text-e-15xl;
   }
   h1,
   .heading-1 {
@@ -33,6 +33,14 @@
   p,
   .p {
     @apply text-e-lg;
+  }
+
+  @font-face {
+    font-family: "Helvetica";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(/public/Helvetica.woff) format("woff2");
   }
 
   html,
