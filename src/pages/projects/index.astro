@@ -2,30 +2,39 @@
 import Layout from "../../layouts/Layout.astro";
 import { client } from "../../lib/sanity/sanity";
 import { EVENTS_QUERY } from "../../lib/sanity/sanityQueries";
+import { cn, containerClass } from "../../lib/utils";
+
+const containerClasses = containerClass(true);
 
 const getData = async () => {
   try {
-    const products = await client.fetch(EVENTS_QUERY);
-    console.log(products);
-    return products || [];
+    const projects = await client.fetch(EVENTS_QUERY);
+    console.log(projects);
+    return projects || [];
   } catch (err) {
-    console.error("Error fetching all products: " + err);
+    console.error("Error fetching all projects: " + err);
     return [];
   }
 };
 
-const products = await getData();
+const projects = await getData();
 
-console.log(products);
+console.log(projects);
 ---
 
-<Layout title="About" showPreloaderBol={false}>
-  <h1 class="cursor-pointer">projects</h1>
+<Layout title="Projects" showPreloaderBol={false}>
+<div class={cn(containerClasses, "flex flex-col gap-16 h-full")}>
 
-  <div>
-    <h1>All Products</h1>
-    <ul>
-      {products.map((product) => <li>{product.name}</li>)}
-    </ul>
+    <h1>All projects</h1>
+    
+    <div class="flex gap-4">
+      {projects.map((project) => (
+        <div class="">
+          <div class="w-[400px] aspect-square bg-slate-300"></div>
+          <h6>{project.name}</h6>
+        </div>
+      ))}
   </div>
+</div>
+
 </Layout>

@@ -40,7 +40,7 @@
     font-style: normal;
     font-weight: 400;
     font-display: swap;
-    src: url(/public/Helvetica.woff) format("woff2");
+    src: url(/Helvetica.woff) format("woff2");
   }
 
   html,

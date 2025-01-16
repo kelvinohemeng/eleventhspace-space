@@ -13,9 +13,9 @@ export default function AnimationControls({}: any) {
 
   return (
     <div className="relative z-40">
-      <div className=" flex items-center space-x-3">
+      <div className=" flex items-center space-x-4 min-w-full">
         <div
-          className={`${animation === "wave" ? "w-fit rounded-full p-1 border-[3px] border-[#FE8B26] " : ""}`}
+          className={`${animation === "wave" ? "w-fit rounded-full  border-[3px] border-[#FE8B26] " : ""} p-1`}
         >
           <button
             onClick={() => setAnimationState("wave")}
@@ -25,7 +25,7 @@ export default function AnimationControls({}: any) {
           </button>
         </div>
         <div
-          className={`${animation === "floating" ? "w-fit rounded-full p-1 border-[3px] border-[#471D86] " : ""}`}
+          className={`${animation === "floating" ? "w-fit rounded-full  border-[3px] border-[#471D86] " : ""} p-1`}
         >
           <button
             onClick={() => setAnimationState("floating")}
@@ -35,7 +35,7 @@ export default function AnimationControls({}: any) {
           </button>
         </div>
         <div
-          className={`${animation === "moon_walk" ? "w-fit rounded-full p-1 border-[3px] border-[#654BFF] " : ""}`}
+          className={`${animation === "moon_walk" ? "w-fit rounded-full  border-[3px] border-[#654BFF] " : ""} p-1`}
         >
           <button
             onClick={() => setAnimationState("moon_walk")}

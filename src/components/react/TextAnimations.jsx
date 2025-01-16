@@ -1,5 +1,8 @@
-import gsap from "gsap";
 import { useEffect, useRef } from "react";
+import gsap from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// gsap.registerPlugin(ScrollTrigger);
 
 export const SplitTextAnim = ({
   text,
@@ -7,6 +10,7 @@ export const SplitTextAnim = ({
   duration = 0.5,
   wrapper: Wrapper = "span",
   trigger = "",
+  useScrollTrigger = true, // New prop to toggle ScrollTrigger
 }) => {
   const charRefs = useRef([]);
 
@@ -16,32 +20,33 @@ export const SplitTextAnim = ({
 
     // Check if GSAP is available and if there are characters to animate
     if (gsap && chars.length > 0) {
-      gsap.from(chars, {
+      const animationConfig = {
         y: -200,
         duration: duration,
         stagger: 0.02,
         ease: "expo.out",
-        scrollTrigger: {
+      };
+
+      // Add ScrollTrigger configuration if useScrollTrigger is true
+      if (useScrollTrigger) {
+        animationConfig.scrollTrigger = {
           trigger: trigger || chars,
-          // markers: true,
           start: "center center",
           end: "bottom top",
-          // toggleActions: "restart none restart none",
-        },
-      });
+        };
+      }
+
+      gsap.from(chars, animationConfig);
     }
-  }, [text]); // Add 'text' as a dependency to re-run the effect when the text changes
+  }, [text, useScrollTrigger]); // Add useScrollTrigger to dependencies
 
   return (
     <Wrapper>
       <span className="block leading-[100%]">
         <span className={className}>
-          {/* Word splitting */}
           {text.split(" ").map((word, i) => (
-            <span key={i} className=" ">
-              {" "}
+            <span key={i} className="">
               <span className="inline-flex w-max px-[2px] overflow-hidden">
-                {/* character splitting */}
                 {word.split("").map((char, j) => (
                   <span
                     className="w-max chars"

@@ -68,110 +68,6 @@ export type Geopoint = {
   alt?: number;
 };
 
-export type Order = {
-  _id: string;
-  _type: "order";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  orderNumber?: string;
-  stripeCheckoutSessionId?: string;
-  stripeCustomerId?: string;
-  customerName?: string;
-  product?: Array<{
-    product?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "product";
-    };
-    quality?: number;
-    _key: string;
-  }>;
-  totalPrice?: number;
-  currency?: string;
-  amountDiscount?: number;
-  status?: "pending" | "paid" | "shipped" | "delivered" | "cancelled";
-  orderDate?: string;
-};
-
-export type Category = {
-  _id: string;
-  _type: "category";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  category?: string;
-  slug?: Slug;
-  description?: string;
-};
-
-export type Product = {
-  _id: string;
-  _type: "product";
-  _createdAt: string;
-  _updatedAt: string;
-  _rev: string;
-  name?: string;
-  slug?: Slug;
-  image?: {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    _type: "image";
-  };
-  price?: number;
-  description?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
-  category?: Array<{
-    _ref: string;
-    _type: "reference";
-    _weak?: boolean;
-    _key: string;
-    [internalGroqTypeReferenceTo]?: "category";
-  }>;
-  stock?: number;
-};
-
-export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
-};
-
 export type BlockContent = Array<{
   children?: Array<{
     marks?: Array<string>;
@@ -179,7 +75,7 @@ export type BlockContent = Array<{
     _type: "span";
     _key: string;
   }>;
-  style?: "normal" | "h1" | "h2" | "h3" | "blockquote";
+  style?: "normal" | "h1" | "h2" | "h3" | "h4" | "blockquote";
   listItem?: "bullet";
   markDefs?: Array<{
     href?: string;
@@ -198,9 +94,50 @@ export type BlockContent = Array<{
   };
   hotspot?: SanityImageHotspot;
   crop?: SanityImageCrop;
+  alt?: string;
   _type: "image";
   _key: string;
 }>;
+
+export type Category = {
+  _id: string;
+  _type: "category";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  description?: string;
+};
+
+export type Project = {
+  _id: string;
+  _type: "project";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  profile?: string;
+  category?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "category";
+  }>;
+};
 
 export type SanityImageCrop = {
   _type: "sanity.imageCrop";
@@ -259,14 +196,20 @@ export type SanityImageMetadata = {
   isOpaque?: boolean;
 };
 
-export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Order | Category | Product | Slug | BlockContent | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata;
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
+};
+
+export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | BlockContent | Category | Project | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
-// Source: ../frontend/src/lib/sanity/sanityQueries.ts
+// Source: ./src/lib/sanity/sanityQueries.ts
 // Variable: EVENTS_QUERY
-// Query: *[_type == "product"] | order(name asc)
+// Query: *[_type == "project"]
 export type EVENTS_QUERYResult = Array<{
   _id: string;
-  _type: "product";
+  _type: "project";
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
@@ -283,37 +226,7 @@ export type EVENTS_QUERYResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   };
-  price?: number;
-  description?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
-      _key: string;
-    }>;
-    style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
-      _key: string;
-    }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  } | {
-    asset?: {
-      _ref: string;
-      _type: "reference";
-      _weak?: boolean;
-      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
-    };
-    hotspot?: SanityImageHotspot;
-    crop?: SanityImageCrop;
-    alt?: string;
-    _type: "image";
-    _key: string;
-  }>;
+  profile?: string;
   category?: Array<{
     _ref: string;
     _type: "reference";
@@ -321,13 +234,12 @@ export type EVENTS_QUERYResult = Array<{
     _key: string;
     [internalGroqTypeReferenceTo]?: "category";
   }>;
-  stock?: number;
 }>;
 
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"product\"] | order(name asc)": EVENTS_QUERYResult;
+    "*[_type == \"project\"]": EVENTS_QUERYResult;
   }
 }

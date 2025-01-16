@@ -1,0 +1,41 @@
+---
+import { client } from '../../lib/sanity/sanity';
+import { EVENTS_QUERY } from '../../lib/sanity/sanityQueries';
+
+
+
+
+
+export async function getStaticPaths() {
+  const getData = async () => {
+    try {
+      const projects = await client.fetch(EVENTS_QUERY);
+      console.log(projects);
+      return projects || [];
+    } catch (err) {
+      console.error("Error fetching all projects: " + err);
+      return [];
+    }
+  };
+  const projects = await getData();
+  console.log(projects);
+
+  return projects.map(({slug}) => {
+    return {
+      params: { 
+        slug : slug?.current 
+      },
+    };
+  });
+}
+
+const { slug } = Astro.params;
+
+const post = await client.fetch(`*[_type == "project" && slug.current == $slug][0]`, { slug });
+
+if (!post){
+  return Astro.redirect('/')
+}
+
+---
+<div>Good dog, {post.name}!</div>
