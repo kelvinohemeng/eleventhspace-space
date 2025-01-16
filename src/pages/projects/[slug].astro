@@ -1,6 +1,7 @@
 ---
 import { client } from '../../lib/sanity/sanity';
 import { EVENTS_QUERY } from '../../lib/sanity/sanityQueries';
+import {urlForImage} from '../../lib/sanity/urlForImage';
 
 
 
@@ -38,4 +39,11 @@ if (!post){
 }
 
 ---
-<div>Good dog, {post.name}!</div>
+<div>
+  <div>Good dog, {post.profile}!</div>
+
+<picture>
+    <source  srcset={urlForImage(post.image).width(220).height(225).url()}/>
+    <img  src={urlForImage(post.image).width(220).height(225).url()}/>
+  </picture>
+</div>
