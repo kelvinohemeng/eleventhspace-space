@@ -105,33 +105,35 @@ const ProofStatement = [
 </div>
 
 <script>
-  import { gsap } from "gsap";
+  import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
-
   gsap.registerPlugin(ScrollTrigger);
+  
+  document.addEventListener("DOMContentLoaded",()=>{
 
-  const svgAnim = gsap.timeline();
+    gsap.to(".svg1", {
+      rotate: 360,
+      // duration: 3,
+      ease: "circ.out",
+      scrollTrigger: {
+        trigger: ".svg1",
+        scrub: 1,
+      },
+    });
+  
+    gsap.to(".svg2", {
+      rotate: -360,
+      // duration: 3,
+      ease: "circ.out",
+      scrollTrigger: {
+        trigger: ".svg2",
+        scrub: 1,
+        // start: "center center",
+        // end: "bottom top",
+        // toggleActions: "restart none restart none",
+      },
+    });
+  })
 
-  gsap.to(".svg1", {
-    rotate: 360,
-    // duration: 3,
-    ease: "circ.out",
-    scrollTrigger: {
-      trigger: ".svg1",
-      scrub: 1,
-    },
-  });
 
-  gsap.to(".svg2", {
-    rotate: -360,
-    // duration: 3,
-    ease: "circ.out",
-    scrollTrigger: {
-      trigger: ".svg2",
-      scrub: 1,
-      // start: "center center",
-      // end: "bottom top",
-      // toggleActions: "restart none restart none",
-    },
-  });
 </script>

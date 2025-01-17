@@ -7,8 +7,8 @@ import { FooterLinks } from "./FooterLinks";
 const containerClasses = containerClass(false);
 ---
 
-<div class="bg-[#F2F2F2] min-h-[600px] .footer">
-  <div class={`${containerClasses} flex flex-col gap-32 py-[80px]`}>
+<div class="bg-[#F2F2F2] .footer">
+  <div class={`${containerClasses} flex flex-col gap-32 pt-[80px] pb-[40px] ! min-h-full`}>
     <div class="flex flex-col md:flex-row gap-11 justify-between">
       <div class="w-full">
         <div class="max-w-[550px] space-y-4">
@@ -25,23 +25,23 @@ const containerClasses = containerClass(false);
 
       <div class="flex flex-col md:flex-row gap-11 md:gap-40">
         <div class="space-y-2">
-          <FooterLinks linkName="About" />
-          <FooterLinks linkName="Service" />
-          <FooterLinks linkName="Projects" />
-          <FooterLinks linkName="Contact" />
-          <FooterLinks linkName="Careers" />
+          <FooterLinks client:load linkName="About" />
+          <FooterLinks client:load linkName="Service" />
+          <FooterLinks client:load linkName="Projects" />
+          <FooterLinks client:load linkName="Contact" />
+          <FooterLinks client:load linkName="Careers" />
         </div>
         <div class="space-y-2">
-          <FooterLinks linkName="LinkedIn" />
-          <FooterLinks linkName="Instagram" />
-          <FooterLinks linkName="Facebook" />
-          <FooterLinks linkName="Youtube" />
-          <FooterLinks linkName="TikTok" />
+          <FooterLinks client:load linkName="LinkedIn" />
+          <FooterLinks client:load linkName="Instagram" />
+          <FooterLinks client:load linkName="Facebook" />
+          <FooterLinks client:load linkName="Youtube" />
+          <FooterLinks client:load linkName="TikTok" />
         </div>
       </div>
     </div>
 
-    <div>
+    <div class=" space-y-4">
       <SplitTextAnim
         client:load
         text="eleventhspace"
