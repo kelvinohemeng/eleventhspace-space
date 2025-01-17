@@ -1,24 +1,26 @@
 ---
 import { SplitTextAnim } from "../components/react/TextAnimations";
 import Button from "../components/ui/Button.astro";
+import { client } from "../lib/sanity/sanity";
+import { EVENTS_QUERY } from "../lib/sanity/sanityQueries";
 import { cn, containerClass } from "../lib/utils";
 
 const containerClasses = containerClass(true);
 
-const projects = [
-  {
-    title: "BEntsi-Enchi",
-    image: "/sample.png",
-  },
-  {
-    title: "R&R Skincare",
-    image: "/sample.png",
-  },
-  {
-    title: "Kitea",
-    image: "/sample.png",
-  },
-];
+
+
+const getData = async () => {
+  try {
+    const projects = await client.fetch(EVENTS_QUERY);
+    console.log(projects);
+    return projects || [];
+  } catch (err) {
+    console.error("Error fetching all projects: " + err);
+    return [];
+  }
+};
+
+const projects = await getData();
 ---
 
 <div class="">
@@ -49,13 +51,13 @@ const projects = [
 
       <div class="w-full flex flex-col md:flex-row gap-16">
         {
-          projects.map((project, index) => (
+          projects.slice(0,3).map((project, index) => (
             <a
-              href=""
+              href={`/projects/${project.slug?.current}`}
               class={`w-full x aspect-[1/1.2] h-full flex flex-col gap-3`}
             >
               <div class=" w-full h-full bg-slate-700" />
-              <p class="text-e-4xl">{project.title}</p>
+              <p class="text-e-4xl">{project.name}</p>
             </a>
           ))
         }
