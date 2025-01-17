@@ -1,8 +1,8 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { client } from '../../lib/sanity/sanity';
-import { EVENTS_QUERY } from '../../lib/sanity/sanityQueries';
-import {urlForImage} from '../../lib/sanity/urlForImage';
+import Layout from "../../layouts/Layout.astro";
+import { client } from "../../lib/sanity/sanity";
+import { EVENTS_QUERY } from "../../lib/sanity/sanityQueries";
+import { urlForImage } from "../../lib/sanity/urlForImage";
 
 export async function getStaticPaths() {
   const getData = async () => {
@@ -18,10 +18,10 @@ export async function getStaticPaths() {
   const projects = await getData();
   console.log(projects);
 
-  return projects.map(({slug}) => {
+  return projects.map(({ slug }) => {
     return {
-      params: { 
-        slug : slug?.current 
+      params: {
+        slug: slug?.current,
       },
     };
   });
@@ -29,20 +29,29 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 
-const post = await client.fetch(`*[_type == "project" && slug.current == $slug][0]`, { slug });
+const post = await client.fetch(
+  `*[_type == "project" && slug.current == $slug][0]`,
+  { slug }
+);
 
-if (!post){
-  return Astro.redirect('/')
+if (!post) {
+  return Astro.redirect("/");
 }
-
 ---
+
 <Layout>
   <div>
-  <div>Good dog, {post.profile}!</div>
+    <div>Good dog, {post.profile}!</div>
 
-  <picture>
-      <source  srcset={urlForImage(post.image).width(220).height(225).url()}/>
-      <img  src={urlForImage(post.image).width(220).height(225).url()}/>
-    </picture>
+    {
+      post.image && (
+        <picture>
+          <source
+            srcset={urlForImage(post.image).width(220).height(225).url()}
+          />
+          <img src={urlForImage(post.image).width(220).height(225).url()} />
+        </picture>
+      )
+    }
   </div>
 </Layout>
