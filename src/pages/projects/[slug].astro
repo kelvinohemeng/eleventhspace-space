@@ -44,13 +44,15 @@ if (!post) {
     <div>Good dog, {post.profile}!</div>
 
     {
-      post.image && (
+      post.image ? (
         <picture>
           <source
             srcset={urlForImage(post.image).width(220).height(225).url()}
           />
           <img src={urlForImage(post.image).width(220).height(225).url()} />
         </picture>
+      ):(
+        <div>No image available.</div>
       )
     }
   </div>
