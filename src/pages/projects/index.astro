@@ -28,7 +28,7 @@ console.log(projects);
 
 <Layout title="Projects" showPreloaderBol={false}>
   <div class="overflow-hidden">
-    <ProjectPageSLider client:load data={projects} />
+    <ProjectPageSLider client:visible data={projects} />
   </div>
   <div class={cn(containerClasses, "flex flex-col gap-16 !py-[80px] h-full")}>
     <div><h1>Our Work</h1></div>

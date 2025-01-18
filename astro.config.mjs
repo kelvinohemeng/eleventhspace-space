@@ -19,11 +19,15 @@ export default defineConfig({
     tailwind(),
     react(),
     sanity({
-      projectId: "sdpu9ubt",
-      dataset: "production",
+      projectId: import.meta.env.PROD
+        ? import.meta.env.SANITY_PROJECTID
+        : "sdpu9ubt",
+      dataset: import.meta.env.PROD
+        ? import.meta.env.SANITY_DATASET
+        : "production",
       useCdn: false,
       apiVersion: "2022-06-01",
-      studioBasePath: "/admin",
+      studioBasePath: import.meta.env.STUDIO_PATH,
     }),
   ],
 });
