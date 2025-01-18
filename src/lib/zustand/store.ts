@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { client } from "../sanity/sanity";
 import { persist } from "zustand/middleware";
 import { EVENTS_QUERY } from "../sanity/sanityQueries";
+import type { EVENTS_QUERYResult } from "../../../sanity.types";
 
 type AnimationStore = {
   animation: string | null;
@@ -11,6 +12,13 @@ type AnimationStore = {
 type LoaderStore = {
   isLoading: boolean;
   setIsLoading: (loading: boolean) => void;
+};
+
+type ApiData = {
+  projects: EVENTS_QUERYResult;
+  isLoading: boolean;
+  error: any;
+  fetchData: () => void;
 };
 
 export const useAnimationStateStore = create<AnimationStore>((set) => ({
@@ -23,39 +31,19 @@ export const useLoaderStore = create<LoaderStore>((set) => ({
   setIsLoading: (loading) => set({ isLoading: loading }),
 }));
 
-export const useApiDataStore = create(
-  persist(
-    (set) => ({
-      data: null,
-      loading: false,
-      error: null,
+export const useApiData = create<ApiData>((set) => ({
+  projects: [],
+  isLoading: false,
+  error: null,
+  fetchData: async () => {
+    set({ isLoading: true });
 
-      fetchData: async () => {
-        set({ loading: true, error: null });
-        try {
-          const projects = await client.fetch(EVENTS_QUERY);
-          set({ data: projects, loading: false });
-          return projects || [];
-        } catch (error) {
-          console.error("Error fetching all projects:", error);
-          set({ data: [], error: error.message, loading: false });
-        }
-      },
-
-      // Add any other actions you need
-      resetStore: () => {
-        set({ data: null, loading: false, error: null });
-      },
-    }),
-    {
-      name: "api-data-storage", // Name for persisting in localStorage
+    try {
+      const response = await client.fetch(EVENTS_QUERY);
+      set({ projects: response });
+    } catch (err: any) {
+      console.error("Error fetching all projects: " + err);
+      set({ projects: [], error: err.message, isLoading: false });
     }
-  )
-);
-
-export const getInitialData = () => {
-  if (typeof window !== "undefined") {
-    return useApiDataStore.getState();
-  }
-  return null;
-};
+  },
+}));

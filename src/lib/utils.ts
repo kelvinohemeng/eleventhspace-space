@@ -21,55 +21,63 @@ export function cn(...inputs: any[]) {
 }
 
 export function containerClass(notNav: boolean): string {
-  return `mx-auto px-[20px] md:px-[40px] lg:px-[68px] max-w-[1920px] ${notNav && "min-h-screen py-[80px] md:py-[120px] h-full"}`;
+  return `mx-auto px-[20px] md:px-[40px] lg:px-[68px] max-w-[1920px] ${
+    notNav && "min-h-screen py-[80px] md:py-[120px] h-full"
+  }`;
 }
 
 //it is not complete ---
+type SplitText = {
+  elementTarget: string;
+  wordClass?: string;
+  charClass?: string;
+};
 
-// export function splitText({ elementTarget, wordClass, charCLass }: any) {
-//   const target = document.querySelector(`.${elementTarget}`); // Target element for the animation
+export function splitText({
+  elementTarget,
+  wordClass = "",
+  charClass = "",
+}: SplitText) {
+  // Select the target element
+  const target: HTMLElement | null = document.querySelector(
+    `.${elementTarget}`
+  );
+  if (!target) {
+    console.error(`Element with class "${elementTarget}" not found.`);
+    return;
+  }
 
-//   // Function to animate text (same animation as before)
-//   const splitText = target.split(" "); // Split the current word into individual characters
+  // Get the text content and split into words
+  const words = target.textContent?.split(" ") || [];
 
-//   // Clear existing content
-//   target.textContent = "";
+  // Clear existing content
+  target.textContent = "";
 
-//   // Add the new word as spans
-//   splitText.forEach((word, index) => {
-//     const span = document.createElement("span");
-//     ``;
-//     //   span.textContent = word;
-//     span.classList.add(
-//       { wordClass },
-//       "inline-block"
-//       // "bg-clip-text",
-//       // "bg-gradient-to-r",
-//       // "from-ara-yellow",
-//       // "to-ara-yellow-deep"
-//     );
-//     target.appendChild(span);
+  // Process each word
+  words.forEach((word, wordIndex) => {
+    const wordSpan = document.createElement("span");
+    wordSpan.classList.add("inline-block");
+    if (wordClass) wordSpan.classList.add(wordClass);
 
-//     const char = word.split("");
-//     char.forEach((char, index) => {
-//       const charSpan = document.createElement("span");
-//       charSpan.textContent = char;
-//       charSpan.classList.add(
-//         { charCLass },
-//         "inline-block",
-//         "bg-clip-text",
-//         "bg-gradient-to-r",
-//         "from-ara-yellow",
-//         "to-ara-yellow-deep"
-//       );
-//       span.appendChild(charSpan);
-//     });
+    // Process each character in the word
+    word.split("").forEach((char) => {
+      const charSpan = document.createElement("span");
+      charSpan.textContent = char;
+      charSpan.classList.add("inline-block");
+      if (charClass) charSpan.classList.add(charClass);
 
-//     if (index < splitText.length - 1) {
-//       const spacerSpan = document.createElement("span");
-//       spacerSpan.textContent = "\u00A0"; // Non-breaking space
-//       spacerSpan.classList.add("spacer");
-//       span.appendChild(spacerSpan);
-//     }
-//   });
-// }
+      wordSpan.appendChild(charSpan);
+    });
+
+    // Append the word span to the target
+    target.appendChild(wordSpan);
+
+    // Add a spacer after each word except the last
+    if (wordIndex < words.length - 1) {
+      const spacerSpan = document.createElement("span");
+      spacerSpan.textContent = "\u00A0"; // Non-breaking space
+      spacerSpan.classList.add("spacer");
+      target.appendChild(spacerSpan);
+    }
+  });
+}

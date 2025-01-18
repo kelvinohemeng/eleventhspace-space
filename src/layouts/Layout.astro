@@ -8,9 +8,10 @@ import "../styles/global.css";
 import Footer from "../components/ui/Footer.astro";
 import ReactLoader from "../components/react/ReactLoader";
 const showPreloader = showPreloaderBol; // Set this dynamically based on loading state
+import StoreApiData from "../components/react/StoreApiData";
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -21,13 +22,14 @@ const showPreloader = showPreloaderBol; // Set this dynamically based on loading
     <title>{title}</title>
   </head>
   <body class="h-full">
+    <StoreApiData client:load />
     <!-- <PreLoader hasPreloader={showPreloader} /> -->
     <!-- <ReactLoader client:load /> -->
     <Header />
-    <main class="w-full h-full pt-[10vh]">
+    <main class="w-full min-h-full">
       <slot />
-      <Footer />
     </main>
+    <Footer />
   </body>
 </html>
 
@@ -39,5 +41,3 @@ const showPreloader = showPreloaderBol; // Set this dynamically based on loading
     height: 100%;
   }
 </style>
-
-

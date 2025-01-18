@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
-import { useAnimationStateStore } from "../../lib/zustand/store";
+import { useAnimationStateStore, useApiData } from "../../lib/zustand/store";
+import { client } from "../../lib/sanity/sanity";
+import { EVENTS_QUERY } from "../../lib/sanity/sanityQueries";
 
 export default function AnimationControls({}: any) {
-  const [clicked, setClicked] = useState(false);
   const { animation, setAnimationState } = useAnimationStateStore();
   useEffect(() => {
     if (animation === "floating") {
@@ -15,7 +16,11 @@ export default function AnimationControls({}: any) {
     <div className="relative z-40">
       <div className=" flex items-center space-x-4 min-w-full">
         <div
-          className={`${animation === "wave" ? "w-fit rounded-full  border-[3px] border-[#FE8B26] " : ""} p-1`}
+          className={`${
+            animation === "wave"
+              ? "w-fit rounded-full  border-[3px] border-[#FE8B26] "
+              : ""
+          } p-1`}
         >
           <button
             onClick={() => setAnimationState("wave")}
@@ -25,7 +30,11 @@ export default function AnimationControls({}: any) {
           </button>
         </div>
         <div
-          className={`${animation === "floating" ? "w-fit rounded-full  border-[3px] border-[#471D86] " : ""} p-1`}
+          className={`${
+            animation === "floating"
+              ? "w-fit rounded-full  border-[3px] border-[#471D86] "
+              : ""
+          } p-1`}
         >
           <button
             onClick={() => setAnimationState("floating")}
@@ -35,7 +44,11 @@ export default function AnimationControls({}: any) {
           </button>
         </div>
         <div
-          className={`${animation === "moon_walk" ? "w-fit rounded-full  border-[3px] border-[#654BFF] " : ""} p-1`}
+          className={`${
+            animation === "moon_walk"
+              ? "w-fit rounded-full  border-[3px] border-[#654BFF] "
+              : ""
+          } p-1`}
         >
           <button
             onClick={() => setAnimationState("moon_walk")}

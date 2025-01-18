@@ -40,7 +40,7 @@ if (!post) {
 ---
 
 <Layout>
-  <div>
+  <div class="pt-[10vh]">
     <div>Good dog, {post.profile}!</div>
 
     {
@@ -51,7 +51,7 @@ if (!post) {
           />
           <img src={urlForImage(post.image).width(220).height(225).url()} />
         </picture>
-      ):(
+      ) : (
         <div>No image available.</div>
       )
     }
