@@ -8,8 +8,10 @@ import { client } from "./src/lib/sanity/sanity";
 export default defineConfig({
   name: "eleventhspace",
   title: "eleventhspace",
-  projectId: "sdpu9ubt",
-  dataset: "production",
+  projectId: import.meta.env.PROD
+    ? import.meta.env.SANITY_PROJECTID
+    : "sdpu9ubt",
+  dataset: import.meta.env.PROD ? import.meta.env.SANITY_DATASET : "production",
   plugins: [structureTool(), visionTool()],
   schema: {
     types: schema.types,
