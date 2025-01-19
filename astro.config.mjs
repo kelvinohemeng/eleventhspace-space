@@ -20,13 +20,12 @@ export default defineConfig({
     react(),
     sanity({
       projectId:
-        process.env.NODE_ENV === "production"
-          ? process.env.SANITY_PROJECTID || "sdpu9ubt"
-          : "sdpu9ubt",
+        (process.env.NODE_ENV === "production" &&
+          process.env.SANITY_PROJECTID) ||
+        "sdpu9ubt",
       dataset:
-        process.env.NODE_ENV === "production"
-          ? process.env.SANITY_DATASET || "production"
-          : "production",
+        (process.env.NODE_ENV === "production" && process.env.SANITY_DATASET) ||
+        "production",
       useCdn: false,
       apiVersion: "2022-06-01",
       studioBasePath: import.meta.env.STUDIO_PATH,
