@@ -4,9 +4,7 @@ import ProjectPageSLider from "../../components/react/ProjectPageSLider";
 import Layout from "../../layouts/Layout.astro";
 import { client } from "../../lib/sanity/sanity";
 import { EVENTS_QUERY } from "../../lib/sanity/sanityQueries";
-import { urlForImage } from "../../lib/sanity/urlForImage";
 import { cn, containerClass } from "../../lib/utils";
-import { useApiData } from "../../lib/zustand/store";
 import ProjectCard from "../../components/ProjectCard.astro";
 
 const containerClasses = containerClass(true);
@@ -31,10 +29,15 @@ console.log(projects);
   <div class="overflow-hidden">
     <ProjectPageSLider client:visible data={projects} />
   </div>
-  <div class={cn(containerClasses, "flex flex-col gap-16 !py-[80px] h-full")}>
+  <div
+    class={cn(
+      containerClasses,
+      "flex flex-col gap-16 !py-[80px] h-full overflow-hidden"
+    )}
+  >
     <div><h1>Our Work</h1></div>
 
-    <div class="grid grid-cols-3 auto-cols-fr gap-8">
+    <div class="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {projects.map((project) => <ProjectCard project={project} />)}
     </div>
   </div>
