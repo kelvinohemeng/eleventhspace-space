@@ -38,7 +38,7 @@ const ProjectPageSLider = ({ data }: ProjectSLider) => {
       <div
         className={cn(containerClasses, "relative min-h-[650px] w-full h-full")}
       >
-        <div className=" absolute bottom-0 z-10 left-0 p-20 flex space-x-4">
+        <div className=" absolute bottom-0 z-10 right-0 p-20 flex space-x-4">
           <div className=" cursor-pointer" onClick={decrementSlider}>
             <div className="bg-slate-900 text-white py-2 px-4  hover:bg-orange-700  flex items-center justify-center aspect-square rounded-full transition">
               <ArrowLeft width={20} height={20} weight="bold" />
@@ -69,10 +69,10 @@ const ProjectPageSLider = ({ data }: ProjectSLider) => {
                     />
                   )}
                 </div>
-                <div className="bbbg-text p-20 max-w-[650px] absolute right-0 z-[99] bottom-0 text-white ">
-                  <h2 className={` font-medium leading-[120%] slide-text`}>
+                <div className="bbbg-text py-20 px-10 max-w-[650px] absolute left-0 z-[99] bottom-0 text-white ">
+                  <h1 className={` font-medium leading-[120%] slide-text`}>
                     {data.name}
-                  </h2>
+                  </h1>
                 </div>
               </a>
             );

@@ -65,15 +65,15 @@ if (!post) {
         )
       }
       <div
-        class="absolute inset-0 top-0 right-0 p-10 min-w-full h-full z-50 flex items-center justify-center"
+        class="absolute inset-0 top-0 right-0 py-10 min-w-full h-full z-50 flex items-center justify-center"
       >
         <div
           class={cn(
             containerClasses,
-            ` w-full h-full !py-0 flex items-end justify-end`
+            ` w-full h-full !py-0 flex items-end justify-start`
           )}
         >
-          <h1 class="max-w-[650px] text-black">{post.name}</h1>
+          <h1 class="max-w-[650px] text-white leading-[120%]">{post.name}</h1>
         </div>
       </div>
     </div>

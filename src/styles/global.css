@@ -8,7 +8,7 @@
   }
   h1,
   .heading-1 {
-    @apply text-e-10xl lg:text-e-12xl;
+    @apply text-e-11xl lg:text-e-12xl;
   }
   h2,
   .heading-2 {
