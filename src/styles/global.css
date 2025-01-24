@@ -4,11 +4,11 @@
 
 @layer base {
   .display-size {
-    @apply text-e-12xl leading-[120%] lg:leading-[100%] tracking-[-0.15rem] lg:text-e-15xl;
+    @apply text-e-10xl leading-[120%] lg:leading-[100%] tracking-tighter lg:text-e-15xl;
   }
   h1,
   .heading-1 {
-    @apply text-e-11xl lg:text-e-12xl;
+    @apply text-e-10xl lg:text-e-12xl;
   }
   h2,
   .heading-2 {

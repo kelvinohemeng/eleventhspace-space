@@ -100,7 +100,7 @@ export const ServiceSectionReact = () => {
                 {services.map((service, index) => (
                   <button
                     onMouseEnter={() => setCurrentService(service)}
-                    className={`${"hover:bg-[#471D86] hover:text-white hover:border-none transition-all duration-300 "} border border-black text-e-2xl px-3 py-2 rounded-full text-black`}
+                    className={`${"hover:bg-[#471D86] hover:text-white hover:border-none transition-all duration-300 "} border border-black text-e-lg md:text-e-2xl px-3 py-2 rounded-full text-black`}
                   >
                     {service.title}
                   </button>
