@@ -17,6 +17,8 @@
     "@astrojs/tailwind": "^5.1.4",
     "@gsap/react": "^2.1.1",
     "@phosphor-icons/react": "^2.1.7",
+    "@portabletext/react": "^3.2.0",
+    "@react-spring/web": "^9.7.5",
     "@react-three/drei": "^9.120.4",
     "@react-three/fiber": "^8.17.10",
     "@react-three/postprocessing": "^2.16.2",
@@ -42,5 +44,8 @@
     "three": "^0.163.0",
     "typescript": "^5.7.3",
     "zustand": "^5.0.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16"
   }
 }

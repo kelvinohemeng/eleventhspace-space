@@ -8,30 +8,33 @@ const containerClasses = containerClass(false);
 ---
 
 <div class="bg-[#F2F2F2] .footer">
-  <div class={`${containerClasses} flex flex-col gap-32 pt-[80px] pb-[40px] ! min-h-full`}>
+  <div
+    class={`${containerClasses} flex flex-col gap-32 pt-[80px] pb-[40px] ! min-h-full`}
+  >
     <div class="flex flex-col md:flex-row gap-11 justify-between">
       <div class="w-full">
         <div class="max-w-[550px] space-y-4">
           <SplitTextAnim
-            client:load
+            client:visible
             text="Let's start a conversation, Let's work together."
             className=" !leading-[120%] font-helvetica font-medium"
             duration={1.5}
             wrapper="h3"
+            trigger=".contact_section"
           />
           <div><Button title="Let's Talk" /></div>
         </div>
       </div>
 
       <div class="flex flex-col md:flex-row gap-11 md:gap-40">
-        <div class="space-y-2">
+        <div class="flex flex-col gap-3">
           <FooterLinks client:load linkName="About" />
           <FooterLinks client:load linkName="Service" />
           <FooterLinks client:load linkName="Projects" />
           <FooterLinks client:load linkName="Contact" />
           <FooterLinks client:load linkName="Careers" />
         </div>
-        <div class="space-y-2">
+        <div class="flex flex-col gap-3">
           <FooterLinks client:load linkName="LinkedIn" />
           <FooterLinks client:load linkName="Instagram" />
           <FooterLinks client:load linkName="Facebook" />
@@ -41,9 +44,9 @@ const containerClasses = containerClass(false);
       </div>
     </div>
 
-    <div class=" space-y-4">
+    <div class="space-y-4">
       <SplitTextAnim
-        client:load
+        client:visible
         text="eleventhspace"
         className=" display-size leading-[100%] font-helvetica font-[500] text-[#471D86]"
         duration={1.5}

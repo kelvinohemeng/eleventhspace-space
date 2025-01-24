@@ -28,7 +28,7 @@ export default defineConfig({
         "production",
       useCdn: false,
       apiVersion: "2022-06-01",
-      studioBasePath: import.meta.env.STUDIO_PATH,
+      studioBasePath: "/admin",
     }),
   ],
 });

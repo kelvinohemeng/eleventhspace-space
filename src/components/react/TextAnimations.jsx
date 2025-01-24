@@ -65,7 +65,7 @@ export const SplitTextAnim = ({
   );
 };
 
-export const SplitWordAnim = ({ text, fontSize }) => {
+export const SplitWordAnim = ({ text, fontSize, duration = 1.5 }) => {
   const wordRef = useRef(null);
 
   useEffect(() => {
@@ -73,10 +73,10 @@ export const SplitWordAnim = ({ text, fontSize }) => {
 
     gsap.from(word, {
       // opacity: 0,
-      y: -300,
-      duration: 0.5,
+      y: 300,
+      duration: duration,
       stagger: 0.02,
-      ease: "expo.out",
+      ease: "power3.out",
       scrollTrigger: {
         trigger: wordRef.current,
         // markers: true,

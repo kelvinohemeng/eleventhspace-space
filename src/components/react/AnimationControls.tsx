@@ -14,7 +14,7 @@ export default function AnimationControls({}: any) {
 
   return (
     <div className="relative z-40">
-      <div className=" flex items-center space-x-4 min-w-full">
+      <div className=" flex flex-col items-start space-y-2 min-w-full">
         <div
           className={`${
             animation === "wave"

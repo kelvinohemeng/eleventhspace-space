@@ -21,8 +21,8 @@ export function cn(...inputs: any[]) {
 }
 
 export function containerClass(notNav: boolean): string {
-  return `mx-auto px-[20px] md:px-[40px] lg:px-[68px] max-w-[1920px] ${
-    notNav && "min-h-screen py-[80px] md:py-[120px] h-full"
+  return `mx-auto px-[20px] md:px-[40px] lg:px-[68px] max-w-[1920px] h-full ${
+    notNav && "py-[80px] md:py-[120px]"
   }`;
 }
 

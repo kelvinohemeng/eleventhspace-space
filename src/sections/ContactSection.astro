@@ -1,12 +1,14 @@
 ---
 import { SplitTextAnim } from "../components/react/TextAnimations";
 import Button from "../components/ui/Button.astro";
-import { containerClass } from "../lib/utils";
+import { cn, containerClass } from "../lib/utils";
 
 const containerClasses = containerClass(true);
 ---
 
-<div class="bg-[#471D86] flex flex-col relative overflow-hidden">
+<div
+  class="bg-[#471D86] flex flex-col relative overflow-hidden contact_section"
+>
   <div
     class="order-last h-[250px] flex overflow-hidden md:h-auto md:absolute -left-[10%] -bottom-[10%]"
   >
@@ -36,63 +38,63 @@ const containerClasses = containerClass(true);
     </svg>
   </div>
 
-  <div
-    class={`${containerClasses} min-w-full flex flex-col md:flex-row gap-16 `}
-  >
-    <div class="w-full">
-      <div class="max-w-[150px] text-[#FE8B26]">
-        <SplitTextAnim
-          client:load
-          text="Let's Talk"
-          className=" display-size leading-[100%] font-helvetica font-[500]"
-          duration={1.5}
-          wrapper="h1"
-        />
+  <div class={cn(containerClasses, "w-full")}>
+    <div class="flex flex-col md:flex-row gap-16">
+      <div class="w-full">
+        <div class="max-w-[150px] text-[#FE8B26]">
+          <SplitTextAnim
+            client:visible
+            text="Let's Talk"
+            className=" display-size leading-[100%] font-helvetica font-[500]"
+            duration={1.5}
+            wrapper="h1"
+          />
+        </div>
       </div>
-    </div>
 
-    <div class="w-full flex flex-col justify-center">
-      <div class="space-y-11 flex flex-col">
-        <form action="" class="flex flex-col gap-4">
-          <label for="name">
-            <div id="name">
-              <input
-                type="text"
-                placeholder="What is your name"
-                class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b border-[#FE8B26] text-[#FE8B26] focus:border-b focus:outline-none focus:border-2"
-              />
-            </div>
-          </label>
-          <label for="Email">
-            <div id="Email">
-              <input
-                type="text"
-                placeholder="Please provide your email"
-                class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b border-[#FE8B26] text-[#FE8B26] focus:border-b focus:outline-none focus:border-2"
-              />
-            </div>
-          </label>
-          <!-- change this to a select component -->
-          <label for="projectType">
-            <div id="projectType">
-              <input
-                type="text"
-                placeholder="What type of project do you need"
-                class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b border-[#FE8B26] text-[#FE8B26] focus:border-b focus:outline-none focus:border-2"
-              />
-            </div>
-          </label>
+      <div class="w-full flex flex-col justify-center">
+        <div class="space-y-11 flex flex-col">
+          <form action="" class="flex flex-col gap-4">
+            <label for="name">
+              <div id="name">
+                <input
+                  type="text"
+                  placeholder="What is your name?"
+                  class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b border-[#FE8B26] text-[#FE8B26] focus:border-b focus:outline-none focus:border-2"
+                />
+              </div>
+            </label>
+            <label for="Email">
+              <div id="Email">
+                <input
+                  type="text"
+                  placeholder="Please provide your email"
+                  class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b border-[#FE8B26] text-[#FE8B26] focus:border-none focus:border-b focus:outline-none focus:border-2"
+                />
+              </div>
+            </label>
+            <!-- change this to a select component -->
+            <label for="projectType">
+              <div id="projectType">
+                <input
+                  type="text"
+                  placeholder="What type of project do you need"
+                  class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b border-[#FE8B26] text-[#FE8B26] focus:border-none focus:border-b focus:outline-none focus:border-2"
+                />
+              </div>
+            </label>
 
-          <label for="message">
-            <textarea
-              id="message"
-              name="message"
-              placeholder="Anything you want us to know?"
-              class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b border-[#FE8B26] text-[#FE8B26] min-h-[250px] resize-none"
-            ></textarea>
-          </label>
-          <div><Button title="Submit" href="/" /></div>
-        </form>
+            <label for="message">
+              <textarea
+                id="message"
+                name="message"
+                placeholder="Anything you want us to know?"
+                class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b border-[#FE8B26] text-[#FE8B26] focus:border-none focus:border-b focus:outline-none focus:border-2 min-h-[250px] resize-none"
+              ></textarea>
+            </label>
+            <div><Button title="Submit" href="/" /></div>
+          </form>
+        </div>
       </div>
     </div>
   </div>

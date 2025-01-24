@@ -85,7 +85,7 @@ const TestimonialAnimation = () => {
 
   return (
     <div className="bg-[#E6E6E6] flex flex-col gap-11 overflow-hidden">
-      <div className="flex flex-col pb-12 relative">
+      <div className=" flex flex-col pb-12 relative">
         <div className="testimonial_track overflow-hidden">
           <div ref={firstWrapperRef} className="testimonial_wrapper flex">
             {testimonials.map((testimonial, index) => (

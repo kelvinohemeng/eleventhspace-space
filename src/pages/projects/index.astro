@@ -7,6 +7,7 @@ import { EVENTS_QUERY } from "../../lib/sanity/sanityQueries";
 import { urlForImage } from "../../lib/sanity/urlForImage";
 import { cn, containerClass } from "../../lib/utils";
 import { useApiData } from "../../lib/zustand/store";
+import ProjectCard from "../../components/ProjectCard.astro";
 
 const containerClasses = containerClass(true);
 
@@ -34,24 +35,7 @@ console.log(projects);
     <div><h1>Our Work</h1></div>
 
     <div class="grid grid-cols-3 auto-cols-fr gap-8">
-      {
-        projects.map((project) => (
-          <a href={`/projects/${project.slug?.current}`} class="">
-            <div class="max-w-[400px] w-full flex flex-col gap-4">
-              {project.image ? (
-                <img
-                  src={urlForImage(project.image).url()}
-                  alt="s"
-                  class=" w-full aspect-[1/1.2] h-full object-cover"
-                />
-              ) : (
-                <div class=" w-full aspect-[1/1.2] h-full object-cover bg-slate-200 animate-pulse" />
-              )}
-              <h5 class=" leading-[110%] ">{project.name}</h5>
-            </div>
-          </a>
-        ))
-      }
+      {projects.map((project) => <ProjectCard project={project} />)}
     </div>
   </div>
 </Layout>

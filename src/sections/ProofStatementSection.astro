@@ -80,7 +80,7 @@ const ProofStatement = [
   >
     <!-- <span class="text-e-15xl text-Red-e-red-500">eleventhspace</span> -->
     <SplitTextAnim
-      client:load
+      client:visible
       text="eleventhspace"
       className=" display-size leading-[100%] font-helvetica font-[500] text-[#FE8B26]"
       duration={1.5}
@@ -90,7 +90,7 @@ const ProofStatement = [
     <div class="min-w-full flex flex-col md:flex-row gap-8 z-10">
       {
         ProofStatement.map((item) => (
-          <div class="w-full text-white p-5 md:p-20 bg-white bg-opacity-5 ">
+          <div class="w-full text-white p-5 md:p-20 bg-white bg-opacity-5 animate_in_stacked">
             <div class="max-w-[248px]">
               <h6 class=" max-w-[150px] font-[500] leading-[120%] font-helvetica">
                 {item.title}
@@ -108,9 +108,8 @@ const ProofStatement = [
   import gsap from "gsap";
   import { ScrollTrigger } from "gsap/ScrollTrigger";
   gsap.registerPlugin(ScrollTrigger);
-  
-  document.addEventListener("DOMContentLoaded",()=>{
 
+  document.addEventListener("DOMContentLoaded", () => {
     gsap.to(".svg1", {
       rotate: 360,
       // duration: 3,
@@ -120,7 +119,7 @@ const ProofStatement = [
         scrub: 1,
       },
     });
-  
+
     gsap.to(".svg2", {
       rotate: -360,
       // duration: 3,
@@ -133,7 +132,5 @@ const ProofStatement = [
         // toggleActions: "restart none restart none",
       },
     });
-  })
-
-
+  });
 </script>

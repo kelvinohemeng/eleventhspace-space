@@ -1,56 +1,68 @@
 ---
 import { ArrowUpRight } from "@phosphor-icons/react";
-import { SplitTextAnim } from "../components/react/TextAnimations";
+import {
+  SplitTextAnim,
+  SplitWordAnim,
+} from "../components/react/TextAnimations";
 import { cn, containerClass } from "../lib/utils";
 import Button from "../components/ui/Button.astro";
 import AnimationControls from "../components/react/AnimationControls";
 import Scene from "../components/react/Scene";
 import SVGGallery from "../components/react/SVGGallery";
-import NewScene from "../components/react/NewScene";
 
 const containerClasses = containerClass(true);
 ---
 
 <div class="about w-full overflow-hidden">
-  <div class={cn(containerClasses, "flex flex-col md:flex-row gap-16 h-full")}>
-    <div class="flex flex-col relative w-full min-h-full flex-1">
-      <div class="w-full">
-        <div class="el-cover overflow-hidden">
-          <div class="text-e-3xl text-Red-e-red-500 el">Who we are</div>
-        </div>
+  <div class={cn(containerClasses, " !pt-0 flex flex-col md:flex-row h-full")}>
+    <div class="flex flex-col relative w-full">
+      <!-- <div class="block md:hidden mt-5">
+        <SVGGallery client:load />
+      </div> -->
+
+      <div class="h-full">
+        <Scene client:load />
+      </div>
+      <div class="absolute top-0 left-0 h-full flex items-center">
+        <AnimationControls client:load />
+      </div>
+    </div>
+
+    <div class="w-full flex flex-col gap-[32px] justify-center min-h-[800px]">
+      <!-- <div class="hidden md:block">
+        <SVGGallery client:load />
+      </div> -->
+      <div class="flex flex-col gap-">
+        <div class="text-e-3xl text-Red-e-red-500 el">Who we are</div>
         <div class="max-w-[750px]">
           <SplitTextAnim
-            client:load
+            client:visible
             text="Welcome"
             className=" leading-[100%] font-helvetica font-[500]"
             duration={1.5}
             wrapper="h1"
           />
         </div>
-        <div class="block md:hidden mt-5">
-          <SVGGallery client:load />
-        </div>
-      </div>
-      <div class="h-full">
-        <Scene client:load />
-      </div>
-      <AnimationControls client:load />
-    </div>
-
-    <div
-      class="w-full max-w-[740px] flex flex-col gap-[233px] justify-between flex-1"
-    >
-      <div class="hidden md:block">
-        <SVGGallery client:load />
       </div>
       <div class="flex flex-col gap-10">
-        <p class="text-e-7xl">
-          Elevent Space is a creative agency redefining the boundaries of
-          everyday brand experiences. We specialize in crafting unique,
-          engaging, and brand-centered solutions that resonate deeply with our
-          clients and their target audiences.
-        </p>
-        <Button title="learn more about who we are" href="/about" />
+        <div class="overflow-hidden">
+          <SplitWordAnim
+            client:visible
+            text={`Elevent Space is a creative agency redefining the boundaries of everyday brand experiences. We specialize in crafting unique, engaging, and brand-centered solutions that resonate deeply with our clients and their target audiences.`}
+            fontSize={"text-e-7xl"}
+          />
+          <!-- <p class="text-e-7xl animate_in">
+            Elevent Space is a creative agency redefining the boundaries of
+            everyday brand experiences. We specialize in crafting unique,
+            engaging, and brand-centered solutions that resonate deeply with our
+            clients and their target audiences.
+          </p> -->
+        </div>
+        <div class="overflow-hiden animate_in">
+          <div>
+            <Button title="learn more about who we are" href="/about" />
+          </div>
+        </div>
       </div>
     </div>
   </div>

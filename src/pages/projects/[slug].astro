@@ -1,8 +1,18 @@
 ---
+import type { EVENTS_QUERYResult } from "../../../sanity.types";
+
 import Layout from "../../layouts/Layout.astro";
 import { client } from "../../lib/sanity/sanity";
 import { EVENTS_QUERY } from "../../lib/sanity/sanityQueries";
 import { urlForImage } from "../../lib/sanity/urlForImage";
+
+import PortableTextReact from "../../components/PortableTextComponent/PortableTextReact";
+
+import { cn, containerClass } from "../../lib/utils";
+import { PortableText } from "@portabletext/react";
+import ContactSection from "../../sections/ContactSection.astro";
+
+const containerClasses = containerClass(true);
 
 export async function getStaticPaths() {
   const getData = async () => {
@@ -18,42 +28,112 @@ export async function getStaticPaths() {
   const projects = await getData();
   console.log(projects);
 
-  return projects.map(({ slug }) => {
+  return projects.map((project) => {
     return {
       params: {
-        slug: slug?.current,
+        slug: project.slug?.current,
       },
+      props: { project },
     };
   });
 }
 
 const { slug } = Astro.params;
-
-const post = await client.fetch(
+const { project } = Astro.props;
+type Project = EVENTS_QUERYResult extends Array<infer T> ? T : never;
+const post: Project = await client.fetch(
   `*[_type == "project" && slug.current == $slug][0]`,
   { slug }
 );
 
 if (!post) {
-  return Astro.redirect("/");
+  return Astro.redirect("/404");
 }
 ---
 
 <Layout>
-  <div class="pt-[10vh]">
-    <div>Good dog, {post.profile}!</div>
-
-    {
-      post.image ? (
-        <picture>
-          <source
-            srcset={urlForImage(post.image).width(220).height(225).url()}
+  <div class="">
+    <div class="flex relative w-full h-full overflow-hidden">
+      {
+        post.image ? (
+          <img
+            src={urlForImage(post.image).url()}
+            class="w-full max-h-[650px] object-cover object-center"
           />
-          <img src={urlForImage(post.image).width(220).height(225).url()} />
-        </picture>
-      ) : (
-        <div>No image available.</div>
-      )
-    }
+        ) : (
+          <div>No image available.</div>
+        )
+      }
+      <div
+        class="absolute inset-0 top-0 right-0 p-10 min-w-full h-full z-50 flex items-center justify-center"
+      >
+        <div
+          class={cn(
+            containerClasses,
+            ` w-full h-full !py-0 flex items-end justify-end`
+          )}
+        >
+          <h1 class="max-w-[650px] text-black">{post.name}</h1>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class={cn(containerClasses, "")}>
+        <div class="flex gap-10">
+          <div class="max-w-[550px] w-full h-[300px] bg-slate-500"></div>
+          <div class="content w-full space-y-20">
+            <div class="row flex justify-between gap-3">
+              <div class="client_name space-y-3">
+                <h6 class="">Client</h6>
+                <p class="text-e-xl">{project.name}</p>
+              </div>
+
+              <div class="client_name space-y-3">
+                <h6 class="">Category</h6>
+                <div>
+                  <span class="flex gap-2 flex-wrap"
+                    >{
+                      project.category?.map((cat) => (
+                        <span class="px-3 py-2 border-[1.5px] border-slate-900 rounded-full text-e-lg text-slate-900 font-semibold">
+                          {cat?.title}
+                        </span>
+                      ))
+                    }</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="row flex justify-between gap-3">
+              <div class="client_name space-y-3">
+                <h6>Profile</h6>
+                <p class="text-e-xl leading-[160%]">{project.profile}</p>
+              </div>
+            </div>
+
+            <div class="row flex justify-between gap-3">
+              <div class="client_name space-y-3">
+                <h6>Problem</h6>
+                <p class="text-e-xl leading-[160%]">{project.problem}</p>
+              </div>
+            </div>
+
+            <div class="row flex justify-between gap-3">
+              <div class="client_name space-y-3">
+                <h6>Our Approach</h6>
+                <div class="prose max-w-full">
+                  {
+                    Array.isArray(project.approach) && (
+                      <PortableText value={project.approach} />
+                    )
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <ContactSection />
 </Layout>

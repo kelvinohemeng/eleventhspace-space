@@ -1,0 +1,43 @@
+---
+import type { EVENTS_QUERYResult } from "../../sanity.types";
+
+type Project = EVENTS_QUERYResult extends Array<infer T> ? T : never;
+
+interface ProjectCardProp {
+  project: Project;
+}
+const { project } = Astro.props as ProjectCardProp;
+
+import { urlForImage } from "../lib/sanity/urlForImage";
+---
+
+<a
+  href={`/projects/${project.slug?.current}`}
+  class={`w-full h-fit flex flex-col gap-3 hover:translate-y-[-20px] transition-all ease-[cubic-bezier(0.230, 1.000, 0.320, 1.000)] duration-[350ms]`}
+>
+  <div class="w-full h-full">
+    {
+      project.image && (
+        <img
+          src={urlForImage(project.image).url()}
+          alt="s"
+          class=" w-full h-full aspect-[1/1.2] object-cover"
+        />
+      )
+    }
+  </div>
+  <h5 class="leading-[140%]">{project.name}</h5>
+  <div>
+    <div>
+      <span class="flex gap-2 flex-wrap"
+        >{
+          project.category?.map((cat) => (
+            <span class="px-3 py-2  border-[1.5px] border-slate-900 rounded-full text-e-lg text-slate-900 font-semibold">
+              {cat?.title}
+            </span>
+          ))
+        }</span
+      >
+    </div>
+  </div>
+</a>

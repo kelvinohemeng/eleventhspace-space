@@ -2,8 +2,6 @@
 import TestimonialAnimation from "../components/react/TestimonialAnimation";
 import { cn, containerClass } from "../lib/utils";
 const containerClasses = containerClass(false);
-
-
 ---
 
 <div class="bg-[#E6E6E6] flex flex-col gap-11 md:gap-16 overflow-hidden">
@@ -11,12 +9,9 @@ const containerClasses = containerClass(false);
     <h6 class="min-w-full text-[#471D86]">Kind words from our clients</h6>
   </div>
   <div class="flex flex-col pb-12 md:pb-32 relative">
-    <TestimonialAnimation client:load/>
+    <TestimonialAnimation client:visible />
   </div>
 </div>
-
-
-
 
 <!-- <div class="bg-[#E6E6E6] flex flex-col gap-11 md:gap-16 overflow-hidden">
   <div class={cn(containerClasses, "w-full pt-10 md:pt-20")}>
@@ -63,9 +58,9 @@ const containerClasses = containerClass(false);
       </div>
     </div>
   </div>
-</div> -->
+</div>
 
-<!-- <script >
+<script>
   import gsap from "gsap";
 
   document.addEventListener("DOMContentLoaded", () => {

@@ -13,6 +13,10 @@ type LoaderStore = {
   isLoading: boolean;
   setIsLoading: (loading: boolean) => void;
 };
+type ClickedNav = {
+  isClicked: boolean;
+  setIsClicked: (clicked: boolean) => void;
+};
 
 type ApiData = {
   projects: EVENTS_QUERYResult;
@@ -46,4 +50,9 @@ export const useApiData = create<ApiData>((set) => ({
       set({ projects: [], error: err.message, isLoading: false });
     }
   },
+}));
+
+export const useNavClicked = create<ClickedNav>((set) => ({
+  isClicked: false,
+  setIsClicked: (clicked) => set({ isClicked: clicked }),
 }));

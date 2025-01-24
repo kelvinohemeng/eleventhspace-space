@@ -30,6 +30,33 @@ import StoreApiData from "../components/react/StoreApiData";
       <slot />
     </main>
     <Footer />
+    <script>
+      import gsap from "gsap";
+      const animateInStacked = document.querySelectorAll(".animate_in_stacked");
+      const animateInView = document.querySelectorAll(".animate_in_view");
+
+      gsap.from(animateInStacked, {
+        y: "400px",
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".animate_in_stacked",
+        },
+      });
+      gsap.from(animateInView, {
+        y: "400px",
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".animate_in_view",
+        },
+      });
+      console.log(animateInStacked);
+    </script>
   </body>
 </html>
 

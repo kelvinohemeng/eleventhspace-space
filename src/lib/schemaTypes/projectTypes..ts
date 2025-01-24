@@ -31,15 +31,36 @@ export const projectType = defineType({
       },
     }),
     defineField({
+      name: "gallery",
+      type: "array",
+      title: "Gallery",
+      of: [{ type: "image" }],
+    }),
+    defineField({
       name: "profile",
       type: "text",
       title: "Profile",
+    }),
+    defineField({
+      name: "problem",
+      type: "text",
+      title: "Problem",
+    }),
+    defineField({
+      name: "approach",
+      type: "array",
+      title: "Approach",
+      of: [{ type: "block" }],
     }),
     defineField({
       name: "category",
       title: "Category",
       type: "array",
       of: [{ type: "reference", to: { type: "category" } }],
+      validation: (Rule) => [
+        Rule.error("Every Item should be unique").unique(),
+        Rule.required().error("At least on item is required"),
+      ],
     }),
   ],
   preview: {

@@ -1,13 +1,13 @@
 ---
+import ProjectCard from "../components/ProjectCard.astro";
 import { SplitTextAnim } from "../components/react/TextAnimations";
 import Button from "../components/ui/Button.astro";
 import { client } from "../lib/sanity/sanity";
 import { EVENTS_QUERY } from "../lib/sanity/sanityQueries";
+import { urlForImage } from "../lib/sanity/urlForImage";
 import { cn, containerClass } from "../lib/utils";
 
 const containerClasses = containerClass(true);
-
-
 
 const getData = async () => {
   try {
@@ -23,9 +23,9 @@ const getData = async () => {
 const projects = await getData();
 ---
 
-<div class="">
-  <div class={cn(containerClasses, `flex gap-16 `)}>
-    <div class="w-full flex flex-col gap-16">
+<div class="h-full">
+  <div class={cn(containerClasses, ` flex justify-center gap-16 `)}>
+    <div class="w-full flex flex-col gap-16 h-full">
       <div class="flex justify-between">
         <div class="max-w-[750px]">
           <div class="text-e-3xl text-Red-e-red-500 el block md:hidden">
@@ -49,16 +49,25 @@ const projects = await getData();
         </div>
       </div>
 
-      <div class="w-full flex flex-col md:flex-row gap-16">
+      <div class="w-full flex flex-col md:flex-row gap-16 min-h-full">
         {
-          projects.slice(0,3).map((project, index) => (
-            <a
-              href={`/projects/${project.slug?.current}`}
-              class={`w-full x aspect-[1/1.2] h-full flex flex-col gap-3`}
-            >
-              <div class=" w-full h-full bg-slate-700" />
-              <p class="text-e-4xl">{project.name}</p>
-            </a>
+          projects.slice(0, 3).map((project, index) => (
+            <ProjectCard project={project} />
+            // <a
+            //   href={`/projects/${project.slug?.current}`}
+            //   class={`w-full h-fit aspect-[1/1.2] flex flex-col gap-3`}
+            // >
+            //   <div class=" w-full h-full">
+            //     {project.image && (
+            //       <img
+            //         src={urlForImage(project.image).url()}
+            //         alt="s"
+            //         class=" w-full h-full object-cover"
+            //       />
+            //     )}
+            //   </div>
+            //   <h5 class=" leading-[140%]">{project.name}</h5>
+            // </a>
           ))
         }
         <div class="block md:hidden">

@@ -20,7 +20,7 @@ export const PrevButton = ({ swiperRef }: SwiperButtonProps) => {
   return (
     <div
       onClick={() => swiperRef.current?.slidePrev()}
-      className="bg-purple-600 text-white py-2 px-4  hover:bg-purple-700  flex items-center justify-center aspect-square rounded-full transition"
+      className=" !cursor-pointer bg-purple-600 text-white py-2 px-4  hover:bg-purple-700  flex items-center justify-center aspect-square rounded-full transition"
     >
       <ArrowLeft width={20} height={20} weight="bold" />
     </div>

@@ -289,7 +289,7 @@ const SVGGallery = () => {
   ];
 
   return (
-    <div className="wrapper w-full overflow-hidden">
+    <div className="wrapper lg:max-w-[720px] w-full overflow-hidden">
       <div className="ssvgs flex w-fit gap-4">
         {SVGS.map(({ id, element }) => (
           <div key={id} className="w-full aspect-square">
