@@ -8,13 +8,15 @@ const containerClasses = containerClass(false);
 <div class="space-y-6 pt-60 w-full">
   <div class={cn(containerClasses, "")}>
     <div class="el-cover overflow-hidden">
-      <div class="text-e-3xl text-Red-e-red-500 el">eleventhspace</div>
+      <div class="text-e-3xl text-Red-e-red-500 dark:text-others-purple-1 el">
+        eleventhspace
+      </div>
     </div>
     <div class="max-w-[750px]">
       <SplitTextAnim
         client:load
         text="We start conversations"
-        className=" display-size font-helvetica font-[500]"
+        className=" dark:text-white display-size font-helvetica font-[500]"
         duration={1.5}
         wrapper="h1"
       />

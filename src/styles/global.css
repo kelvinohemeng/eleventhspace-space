@@ -61,14 +61,14 @@
 @layer utilities {
   .mask-horizontal {
     @apply [mask-image:linear-gradient(to_right,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_20%,rgba(0,0,0,1)_80%,rgba(0,0,0,0)_100%)]
-           [mask-size:cover]
-           [mask-repeat:no-repeat];
+               [mask-size:cover]
+               [mask-repeat:no-repeat];
   }
 
   .mask-vertical {
     @apply [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0)_0%,rgba(0,0,0,1)_20%,rgba(0,0,0,1)_80%,rgba(0,0,0,0)_100%)]
-           [mask-size:cover]
-           [mask-repeat:no-repeat];
+               [mask-size:cover]
+               [mask-repeat:no-repeat];
   }
 
   .paused .animate-scrollX,
@@ -80,4 +80,8 @@
     animation-direction: reverse;
     animation-delay: -3s;
   }
+}
+
+* {
+  @apply transition-colors duration-100;
 }

@@ -21,15 +21,15 @@ import StoreApiData from "../components/react/StoreApiData";
     <!-- <ClientRouter /> -->
     <title>{title}</title>
   </head>
-  <body class="w-full h-full">
-    <StoreApiData client:load />
+  <body class="dark w-full h-full">
+    <!-- <StoreApiData client:load /> -->
     <!-- <PreLoader hasPreloader={showPreloader} /> -->
     <!-- <ReactLoader client:load /> -->
     <Header />
-    <main class="w-full min-h-full">
+    <main class="dark:bg-Black-e-black-500 w-full min-h-full">
       <slot />
+      <Footer />
     </main>
-    <Footer />
     <script>
       import gsap from "gsap";
       const animateInStacked = document.querySelectorAll(".animate_in_stacked");

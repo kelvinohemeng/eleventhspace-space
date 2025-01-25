@@ -4,7 +4,7 @@ import { Swiper as SwiperType } from "swiper";
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import { NextButton, PrevButton } from "./SwiperNextBtn";
-import { SplitTextAnim } from "./TextAnimations";
+import { SplitTextAnim, SplitWordAnim } from "./TextAnimations";
 import { cn, containerClass } from "../../lib/utils";
 import SlitText from "../../components/react/reactbits/SplitText";
 const containerClasses = containerClass(false);
@@ -48,18 +48,17 @@ const TeamSlider = () => {
           `w-full pt-[80px] flex flex-col gap-16 overflow-visible`
         )}
       >
-        <div className="max-w-[750px] space-y-4">
+        <div className="max-w-[750px] flex flex-col gap-16">
           <SplitTextAnim
             text="Our Team"
             className=" leading-[100%] font-helvetica font-[500]"
             duration={1.5}
             wrapper="h1"
           />
-          <p className="text-e-2xl opacity-70">
-            The creative team behind our creative success. Lorem ipsum dolor,
-            sit amet consectetur adipisicing elit. Commodi repellendus tempore
-            quam sapiente! Repellendus molestias labore, sequi nobis quas qui.
-          </p>
+          <SplitWordAnim
+            text={`The creative team behind our creative success. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi repellendus tempore quam sapiente! Repellendus molestias labore, sequi nobis quas qui.`}
+            fontSize={"text-e-7xl"}
+          />
         </div>
         <div className={`!overflow-visible`}>
           <Swiper

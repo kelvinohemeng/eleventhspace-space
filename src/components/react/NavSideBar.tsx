@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "./Link";
 import { Copyright } from "@phosphor-icons/react";
 import gsap from "gsap";
+import { ThemeToggleButton } from "./ThemeToggleButton";
 
 const NavSideBar = () => {
   const [isClicked, setIsClicked] = useState(false);
@@ -36,12 +37,9 @@ const NavSideBar = () => {
   useEffect(() => {
     if (isClicked) {
       timelineRef.current?.play();
-      console.log("clicked");
     } else {
       timelineRef.current?.reverse();
-      console.log("reverse click");
     }
-    console.log(isClicked);
   }, [isClicked, setIsClicked]);
 
   return (
@@ -91,7 +89,14 @@ const NavSideBar = () => {
             </Link>
           </div>
           <div className="space-y-6 seq_2">
-            <h2 className="text-white seq_2">eleventhspace</h2>
+            <div
+              className="relativecursor-pointer"
+              onClick={() => {
+                setIsClicked(!isClicked);
+              }}
+            >
+              <ThemeToggleButton />
+            </div>
             <div className="flex justify-between items-center text-white seq_2">
               <span className="flex items-center gap-2">
                 <p>Copyright</p>

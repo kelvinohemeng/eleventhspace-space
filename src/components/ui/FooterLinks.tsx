@@ -11,7 +11,7 @@ export const FooterLinks = ({ linkName, href }: FooterLink) => {
   const linkRef2 = useRef<HTMLDivElement>(null);
 
   return (
-    <div className=" max-h-[25px] overflow-hidden">
+    <div className=" max-h-[25px] overflow-hidden dark:text-white">
       <a href={href} className="footer-link flex flex-col ">
         <h6 ref={linkRef1}>{linkName}</h6>
         <h6 ref={linkRef2}>{linkName}</h6>

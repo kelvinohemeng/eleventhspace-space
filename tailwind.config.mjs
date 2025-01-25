@@ -53,6 +53,10 @@ export default {
           "e-red-800": "#821217",
           "e-red-900": "#630d11",
         },
+        others: {
+          "purple-1": "#B467FF",
+          "text-dark": "#e6e6e6",
+        },
       },
       fontSize: {
         "e-xs": "0.75rem",
@@ -98,4 +102,5 @@ export default {
     },
   },
   plugins: [require("@tailwindcss/typography")],
+  darkMode: "class",
 };
