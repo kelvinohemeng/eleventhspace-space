@@ -51,13 +51,13 @@ const TeamSlider = () => {
         <div className="max-w-[750px] flex flex-col gap-16">
           <SplitTextAnim
             text="Our Team"
-            className=" leading-[100%] font-helvetica font-[500]"
+            className=" leading-[100%] font-helvetica font-[500] dark:text-white"
             duration={1.5}
             wrapper="h1"
           />
           <SplitWordAnim
             text={`The creative team behind our creative success. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi repellendus tempore quam sapiente! Repellendus molestias labore, sequi nobis quas qui.`}
-            fontSize={"text-e-7xl"}
+            fontSize={"text-e-7xl dark:text-others-text-dark"}
           />
         </div>
         <div className={`!overflow-visible`}>
@@ -99,7 +99,7 @@ const TeamSlider = () => {
                       <div className=" w-full  bg-slate-700 aspect-[1/1.2]">
                         image goes here
                       </div>
-                      <div className="flex flex-col">
+                      <div className="flex flex-col dark:text-others-text-dark">
                         <h5 className=" font-medium">{team.name}</h5>
                         <p>{team.title}</p>
                       </div>

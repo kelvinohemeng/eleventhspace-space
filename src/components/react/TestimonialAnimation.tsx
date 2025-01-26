@@ -84,10 +84,13 @@ const TestimonialAnimation = () => {
   }, []);
 
   return (
-    <div className="bg-[#E6E6E6] flex flex-col gap-11 overflow-hidden">
+    <div className=" flex flex-col gap-11 overflow-hidden">
       <div className=" flex flex-col pb-12 relative">
         <div className="testimonial_track overflow-hidden">
-          <div ref={firstWrapperRef} className="testimonial_wrapper flex">
+          <div
+            ref={firstWrapperRef}
+            className="testimonial_wrapper flex dark:text-others-text-dark "
+          >
             {testimonials.map((testimonial, index) => (
               <a
                 key={`first-${index}`}
@@ -107,7 +110,7 @@ const TestimonialAnimation = () => {
         <div className="testimonial_track overflow-hidden mt-2">
           <div
             ref={secondWrapperRef}
-            className="testimonial_wrapper_reverse flex"
+            className="testimonial_wrapper_reverse flex  dark:text-others-text-dark"
           >
             {testimonials.map((testimonial, index) => (
               <a

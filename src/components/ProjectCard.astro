@@ -26,13 +26,13 @@ import { urlForImage } from "../lib/sanity/urlForImage";
       )
     }
   </div>
-  <h5 class="leading-[140%]">{project.name}</h5>
+  <h5 class="leading-[140%] dark:text-others-text-dark">{project.name}</h5>
   <div>
     <div>
       <span class="flex gap-2 flex-wrap"
         >{
           project.category?.map((cat) => (
-            <span class="px-3 py-2  border-[1.5px] border-slate-900 rounded-full text-e-lg text-slate-900 font-semibold">
+            <span class="px-3 py-2  border-[1.5px] border-slate-900 dark:border-white  dark:text-white rounded-full text-e-lg text-slate-900 font-semibold">
               {cat?.title}
             </span>
           ))
