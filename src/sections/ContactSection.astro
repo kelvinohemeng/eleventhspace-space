@@ -56,43 +56,44 @@ const containerClasses = containerClass(true);
         <div class="space-y-11 flex flex-col">
           <form action="" class="flex flex-col gap-4">
             <label for="name">
-              <div id="name">
+              <div id="name" class="border-[#FE8B26] border-b">
                 <input
                   type="text"
                   placeholder="What is your name?"
-                  class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b border-[#FE8B26] text-[#FE8B26] focus:border-b focus:outline-none focus:border-2 placeholder:text-[#ffffff]"
+                  class="appearance-none focus:bg-transparent placeholder:text-e-4xl w-full p-4 bg-transparent text-[#FE8B26] focus:outline-none focus:border-none placeholder:text-others-text-dark"
                 />
               </div>
             </label>
             <label for="Email">
-              <div id="Email">
+              <div id="Email" class="border-[#FE8B26] border-b">
                 <input
                   type="text"
                   placeholder="Please provide your email"
-                  class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b border-[#FE8B26] text-[#FE8B26] focus:border-none focus:border-b focus:outline-none focus:border-2"
+                  class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b text-[#FE8B26] border-none focus:outline-none placeholder:text-others-text-dark"
                 />
               </div>
             </label>
             <!-- change this to a select component -->
             <label for="projectType">
-              <div id="projectType">
+              <div id="projectType" class="border-[#FE8B26] border-b">
                 <input
                   type="text"
                   placeholder="What type of project do you need"
-                  class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b border-[#FE8B26] text-[#FE8B26] focus:border-none focus:border-b focus:outline-none focus:border-2"
+                  class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b border-[#FE8B26] text-[#FE8B26] focus:border-none border-none focus:outline-none focus:border-2 placeholder:text-others-text-dark"
                 />
               </div>
             </label>
 
             <label for="message">
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Anything you want us to know?"
-                class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b border-[#FE8B26] text-[#FE8B26] focus:border-none focus:border-b focus:outline-none focus:border-2 min-h-[250px] resize-none"
-              ></textarea>
+              <div id="message" class="border-[#FE8B26] border-b">
+                <textarea
+                  name="message"
+                  placeholder="Anything you want us to know?"
+                  class="placeholder:text-e-4xl w-full p-4 bg-transparent border-[#FE8B26] text-[#FE8B26] border-none focus:outline-none focus:border-2 min-h-[250px] resize-none placeholder:text-others-text-dark"
+                ></textarea>
+              </div>
             </label>
-            <div><Button title="Submit" href="/" /></div>
+            <div class="mt-4"><Button title="Submit" href="/" /></div>
           </form>
         </div>
       </div>

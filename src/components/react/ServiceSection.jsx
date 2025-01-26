@@ -94,7 +94,7 @@ export const ServiceSectionReact = () => {
                 />
                 <SplitWordAnim
                   text={`Elevent Space is a creative agency redefining the boundaries of everyday brand experiences. We specialize in crafting unique, engaging, and brand-centered solutions that resonate deeply with our clients and their target audiences.`}
-                  fontSize={"text-e-7xl dark:text-Black-e-black-50"}
+                  className={"text-e-7xl dark:text-Black-e-black-50"}
                 />
               </div>
             </div>

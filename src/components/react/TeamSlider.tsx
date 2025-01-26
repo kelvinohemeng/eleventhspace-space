@@ -57,7 +57,7 @@ const TeamSlider = () => {
           />
           <SplitWordAnim
             text={`The creative team behind our creative success. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi repellendus tempore quam sapiente! Repellendus molestias labore, sequi nobis quas qui.`}
-            fontSize={"text-e-7xl dark:text-others-text-dark"}
+            className={"text-e-7xl dark:text-others-text-dark"}
           />
         </div>
         <div className={`!overflow-visible`}>

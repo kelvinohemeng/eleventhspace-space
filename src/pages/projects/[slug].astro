@@ -78,7 +78,7 @@ if (!post) {
       </div>
     </div>
     <div>
-      <div class={cn(containerClasses, "")}>
+      <div class={cn(containerClasses, "dark:text-others-text-dark")}>
         <div class="flex gap-10">
           <div class="max-w-[550px] w-full h-[300px] bg-slate-500"></div>
           <div class="content w-full space-y-20">
@@ -121,7 +121,7 @@ if (!post) {
             <div class="row flex justify-between gap-3">
               <div class="client_name space-y-3">
                 <h6>Our Approach</h6>
-                <div class="prose max-w-full">
+                <div class="prose max-w-full dark:text-others-text-dark">
                   {
                     Array.isArray(project.approach) && (
                       <PortableText value={project.approach} />

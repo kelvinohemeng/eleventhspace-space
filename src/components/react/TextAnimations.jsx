@@ -65,7 +65,7 @@ export const SplitTextAnim = ({
   );
 };
 
-export const SplitWordAnim = ({ text, fontSize, duration = 1.5 }) => {
+export const SplitWordAnim = ({ text, className, duration = 1.5 }) => {
   const wordRef = useRef(null);
 
   useEffect(() => {
@@ -87,7 +87,7 @@ export const SplitWordAnim = ({ text, fontSize, duration = 1.5 }) => {
   }, [text]); // Add 'text' as a dependency to re-run the effect when the text changes
 
   return (
-    <span className={`${fontSize} `}>
+    <span className={className}>
       {/* Word splitting */}
       <span
         className="block leading-[120%] relative tracking-tight"
