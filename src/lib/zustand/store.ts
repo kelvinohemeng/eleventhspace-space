@@ -14,8 +14,8 @@ type LoaderStore = {
   setIsLoading: (loading: boolean) => void;
 };
 type ClickedNav = {
-  isClicked: boolean;
-  setIsClicked: (clicked: boolean) => void;
+  isClickedTheme: boolean;
+  setIsClickedTheme: (clicked: boolean) => void;
 };
 
 type ApiData = {
@@ -53,6 +53,6 @@ export const useApiData = create<ApiData>((set) => ({
 }));
 
 export const useNavClicked = create<ClickedNav>((set) => ({
-  isClicked: false,
-  setIsClicked: (clicked) => set({ isClicked: clicked }),
+  isClickedTheme: false,
+  setIsClickedTheme: (clicked) => set({ isClickedTheme: clicked }),
 }));

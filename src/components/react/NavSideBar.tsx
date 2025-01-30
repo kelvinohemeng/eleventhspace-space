@@ -3,9 +3,12 @@ import { Link } from "./Link";
 import { Copyright } from "@phosphor-icons/react";
 import gsap from "gsap";
 import { ThemeToggleButton } from "./ThemeToggleButton";
+import { useNavClicked } from "../../lib/zustand/store";
 
 const NavSideBar = () => {
   const [isClicked, setIsClicked] = useState(false);
+  const { isClickedTheme, setIsClickedTheme } = useNavClicked();
+
   const timelineRef = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
@@ -55,16 +58,20 @@ const NavSideBar = () => {
       >
         <div
           className={`w-[35px] h-1 bg-slate-600 transition-all ${
-            isClicked ? " transform rotate-[45deg] translate-y-3 bg-white" : ""
+            isClickedTheme ? "bg-white" : " bg-black"
+          } ${
+            isClicked ? " transform rotate-[45deg] translate-y-3  bg-white" : ""
           }`}
         ></div>
         <div
           className={`w-[35px] h-1 bg-slate-600 transition-all ${
-            isClicked ? " bg-opacity-0" : ""
-          }`}
+            isClickedTheme ? "bg-white" : " bg-black"
+          } ${isClicked ? " bg-opacity-0" : ""}`}
         ></div>
         <div
           className={`w-[35px] h-1 bg-slate-600 transition-all ${
+            isClickedTheme ? "bg-white" : " bg-black"
+          } ${
             isClicked
               ? " transform rotate-[-45deg] -translate-y-3 bg-white"
               : ""
@@ -72,7 +79,10 @@ const NavSideBar = () => {
         ></div>
       </div>
 
-      <div className="absolute top-0 right-0 w-full max-w-[500px] translate-x-[100%] h-screen bg-slate-900 z-[99] overflow-hidden seq_1">
+      <div
+        className="absolute top-0 right-0 w-full max-w-[500px] translate-x-[100%] h-dvh bg-Black-e-black-500
+       z-[99] overflow-hidden seq_1"
+      >
         <div className="p-8 pt-[80px] flex flex-col justify-between h-full">
           <div className="gap-12 flex flex-col seq_2">
             <Link href="/">
@@ -97,7 +107,7 @@ const NavSideBar = () => {
             >
               <ThemeToggleButton />
             </div>
-            <div className="flex justify-between items-center text-white seq_2">
+            <div className="flex flex-col items-start text-white seq_2">
               <span className="flex items-center gap-2">
                 <p>Copyright</p>
                 <Copyright />
