@@ -20,9 +20,10 @@ export const Link = ({
     <a
       href={href}
       target={target}
-      className={cn("link no-underline text-black text-lg", className, {
-        "text-red-700": test,
-      })}
+      className={cn(
+        "link no-underline text-black text-lg font-bold",
+        className
+      )}
     >
       {children}
     </a>

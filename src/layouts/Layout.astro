@@ -32,9 +32,12 @@ import StoreApiData from "../components/react/StoreApiData";
     </main>
     <script>
       import gsap from "gsap";
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
+      gsap.registerPlugin(ScrollTrigger);
 
       const animateInStacked = document.querySelectorAll(".animate_in_stacked");
-      const animateInView = document.querySelectorAll(".animate_in_view");
+      const animateInView = document.querySelectorAll(".animate_in_view_about");
+      const projectCard = document.querySelectorAll(".project_card");
 
       gsap.from(animateInStacked, {
         y: "400px",
@@ -53,10 +56,9 @@ import StoreApiData from "../components/react/StoreApiData";
         stagger: 0.2,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: ".animate_in_view",
+          trigger: ".about",
         },
       });
-      console.log(animateInStacked);
     </script>
   </body>
 </html>

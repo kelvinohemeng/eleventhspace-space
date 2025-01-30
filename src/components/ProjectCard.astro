@@ -13,7 +13,7 @@ import { urlForImage } from "../lib/sanity/urlForImage";
 
 <a
   href={`/projects/${project.slug?.current}`}
-  class={`w-full h-fit flex flex-col gap-3 hover:translate-y-[-20px] transition-all ease-[cubic-bezier(0.230, 1.000, 0.320, 1.000)] duration-[350ms]`}
+  class={`w-full h-fit flex flex-col gap-3 hover:translate-y-[-20px] transition-all ease-[cubic-bezier(0.230, 1.000, 0.320, 1.000)] duration-[350ms] project_card`}
 >
   <div class="w-full h-full">
     {
@@ -41,3 +41,23 @@ import { urlForImage } from "../lib/sanity/urlForImage";
     </div>
   </div>
 </a>
+
+<!-- <script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+
+  const projectCard = document.querySelectorAll(".project_card");
+
+  gsap.from(projectCard, {
+    y: "400px",
+    opacity: 0,
+    duration: 0.8,
+    stagger: 0.2,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".project_section",
+      markers: true,
+    },
+  });
+</script> -->

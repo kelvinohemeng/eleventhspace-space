@@ -55,7 +55,7 @@ const ProjectPageSLider = ({ data }: ProjectSLider) => {
           {data?.slice(0, 3).map((data, index) => {
             return (
               <a
-                //   href={`/projects/${data.slug?.current}`}
+                href={`/projects/${data.slug?.current}`}
                 className={`${
                   currentIndex === index ? "flex" : "hidden"
                 } w-full h-full flex-col gap-3 overflow-visible absolute inset-0`}

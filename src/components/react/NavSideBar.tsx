@@ -45,7 +45,7 @@ const NavSideBar = () => {
   return (
     <>
       <div
-        className={`absolute bbg inset-0 h-screen bg-opacity-50 bg-black pointer-events-none opacity-0 `}
+        className={`absolute bbg inset-0 h-dvh bg-opacity-50 bg-black pointer-events-none opacity-0 `}
       ></div>
       <div
         className="relative space-y-2 !z-[999] trigger_nav cursor-pointer"
