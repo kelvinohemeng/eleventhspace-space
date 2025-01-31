@@ -14,28 +14,35 @@ const containerClasses = containerClass(true);
 ---
 
 <div class="about w-full overflow-hidden">
-  <div class={cn(containerClasses, " !pt-0 flex flex-col md:flex-row h-full")}>
-    <div class="flex flex-col relative w-full">
-      <!-- <div class="block md:hidden mt-5">
+  <div
+    class={cn(
+      containerClasses,
+      " flex flex-col md:flex-row h-full min-h-[800px] justify-start items-start mb-8"
+    )}
+  >
+    <div
+      class="text-e-3xl text-Red-e-red-500 dark:text-others-purple-1 el flex-1"
+    >
+      Who we are
+    </div>
+    <!-- <div class="flex flex-col relative w-full"> -->
+    <!-- <div class="block md:hidden mt-5">
         <SVGGallery client:load />
       </div> -->
 
-      <div class="h-full">
+    <!-- <div class="h-full">
         <Scene client:load />
       </div>
       <div class="absolute top-0 left-0 h-full flex items-center">
         <AnimationControls client:load />
-      </div>
-    </div>
-
-    <div class="w-full flex flex-col gap-[32px] justify-center min-h-[800px]">
-      <!-- <div class="hidden md:block">
-        <SVGGallery client:load />
       </div> -->
+    <!-- </div> -->
+
+    <div class="flex-1 w-full flex flex-col gap-[32px] justify-center">
+      <div class="hidden md:block">
+        <SVGGallery client:load />
+      </div>
       <div class="flex flex-col about">
-        <div class="text-e-3xl text-Red-e-red-500 dark:text-others-purple-1 el">
-          Who we are
-        </div>
         <div class="max-w-[750px]">
           <SplitTextAnim
             client:visible

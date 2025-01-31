@@ -34,11 +34,11 @@ const ProjectPageSLider = ({ data }: ProjectSLider) => {
   }, [currentIndex, setCurrentIndex]);
 
   return (
-    <div className="relative  flex flex-col gap-8 h-full">
+    <div className="relative flex flex-col gap-8 h-full">
       <div
         className={cn(containerClasses, "relative min-h-[650px] w-full h-full")}
       >
-        <div className=" absolute bottom-0 z-10 right-0 p-20 flex space-x-4">
+        <div className=" absolute bottom-0 z-10 right-0 max-md:left-0 p-12 md:p-20 flex space-x-4">
           <div className=" cursor-pointer" onClick={decrementSlider}>
             <div className="bg-slate-900 text-white py-2 px-4  hover:bg-orange-700  flex items-center justify-center aspect-square rounded-full transition">
               <ArrowLeft width={20} height={20} weight="bold" />
@@ -58,7 +58,7 @@ const ProjectPageSLider = ({ data }: ProjectSLider) => {
                 href={`/projects/${data.slug?.current}`}
                 className={`${
                   currentIndex === index ? "flex" : "hidden"
-                } w-full h-full flex-col gap-3 overflow-visible absolute inset-0`}
+                } w-full h-full flex-col gap-3  overflow-visible absolute inset-0`}
               >
                 <div className="bbbg absolute w-full h-full top-0 left-0 bg-slate-900">
                   {data.image && (
@@ -69,7 +69,7 @@ const ProjectPageSLider = ({ data }: ProjectSLider) => {
                     />
                   )}
                 </div>
-                <div className="bbbg-text py-20 px-10 max-w-[650px] absolute left-0 z-[99] bottom-0 text-white ">
+                <div className="bbbg-text py-20 px-10 max-w-[650px] absolute left-0 z-[99] bottom-20 text-white ">
                   <h1 className={` font-medium leading-[120%] slide-text`}>
                     {data.name}
                   </h1>

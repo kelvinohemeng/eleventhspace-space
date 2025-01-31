@@ -81,9 +81,7 @@ export const ServiceSectionReact = () => {
           <div className="w-full flex flex-col gap-16 justify-center">
             <div>
               <div className="el-cover overflow-hidden">
-                <div className="text-e-3xl text-others-purple-1 el">
-                  Services
-                </div>
+                <div className="text-e-3xl text-Red-e-red-500 el">Services</div>
               </div>
               <div className="max-w-[750px] flex flex-col gap-16">
                 <SplitTextAnim
