@@ -6,8 +6,8 @@ export const ThemeToggleButton = () => {
   const { isClickedTheme, setIsClickedTheme } = useNavClicked();
 
   useEffect(() => {
-    // Check if localStorage is available
-    if (typeof window !== "undefined") {
+    document.addEventListener("DOMContentLoaded", () => {
+      localStorage.setItem("theme", "dark");
       const savedTheme = localStorage.getItem("theme");
       if (savedTheme === "dark") {
         // setTheme(true);
@@ -18,20 +18,19 @@ export const ThemeToggleButton = () => {
         setIsClickedTheme(false);
         document.body.classList.remove("dark");
       }
-    }
+    });
   }, []);
 
   useEffect(() => {
-    // Update theme in localStorage and document body
-    if (typeof window !== "undefined") {
-      if (isClickedTheme) {
-        document.body.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      } else {
-        document.body.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      }
+    if (isClickedTheme) {
+      document.body.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.body.classList.remove("dark");
+      localStorage.setItem("theme", "light");
     }
+    const checkLocalStorage = localStorage.getItem("theme");
+    console.log(checkLocalStorage);
   }, [isClickedTheme]);
 
   return (
