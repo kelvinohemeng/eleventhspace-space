@@ -71,29 +71,12 @@ const TeamSlider = () => {
             //   autoHeight={true}
             modules={[Autoplay]}
             navigation={true}
-            breakpoints={{
-              "@0.00": {
-                slidesPerView: 1,
-                spaceBetween: 10,
-              },
-              "@0.75": {
-                slidesPerView: 2,
-                spaceBetween: 40,
-              },
-              "@1.00": {
-                slidesPerView: "auto",
-                spaceBetween: 40,
-              },
-              "@1.50": {
-                slidesPerView: "auto",
-                spaceBetween: 50,
-              },
-            }}
+            slidesPerView="auto"
             className="mySwiper !w-full !overflow-visible"
           >
             {teams.map((team, index) => {
               return (
-                <SwiperSlide className=" !w-[416px]  flex flex-col my-6">
+                <SwiperSlide className=" !max-w-[350px] md:!w-[416px]  flex flex-col my-6">
                   <a href="/" className={`w-full h-full`}>
                     <div className=" relative w-full h-full  flex flex-col">
                       <div className=" w-full  bg-slate-700 aspect-[1/1.2]">
