@@ -13,10 +13,10 @@ type LoaderStore = {
   isLoading: boolean;
   setIsLoading: (loading: boolean) => void;
 };
-type ClickedNav = {
+interface ClickedNav {
   isClickedTheme: boolean;
   setIsClickedTheme: (clicked: boolean) => void;
-};
+}
 
 type ApiData = {
   projects: EVENTS_QUERYResult;
@@ -52,7 +52,14 @@ export const useApiData = create<ApiData>((set) => ({
   },
 }));
 
-export const useNavClicked = create<ClickedNav>((set) => ({
-  isClickedTheme: false,
-  setIsClickedTheme: (clicked) => set({ isClickedTheme: clicked }),
-}));
+export const useNavClicked = create<ClickedNav>()(
+  persist(
+    (set) => ({
+      isClickedTheme: false,
+      setIsClickedTheme: (value: boolean) => set({ isClickedTheme: value }), // ✅ Properly typed parameter
+    }),
+    {
+      name: "theme-storage", // ✅ LocalStorage key for persistence
+    }
+  )
+);

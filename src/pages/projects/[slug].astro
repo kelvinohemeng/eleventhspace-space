@@ -54,6 +54,10 @@ if (!post) {
 <Layout>
   <div class="">
     <div class="flex relative w-full h-full overflow-hidden">
+      <div
+        class="bg-gradient-to-b from-transparent to-Black-e-black-500 absolute bottom-0 z-[9] w-full h-1/2"
+      >
+      </div>
       {
         post.image ? (
           <img
@@ -73,7 +77,9 @@ if (!post) {
             ` w-full h-full !py-0 flex items-end justify-start`
           )}
         >
-          <h1 class="max-w-[650px] text-white leading-[120%]">{post.name}</h1>
+          <h1 class="max-w-[650px] text-white leading-[120%] z-[99]">
+            {post.name}
+          </h1>
         </div>
       </div>
     </div>

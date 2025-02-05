@@ -35,6 +35,7 @@ const ProjectPageSLider = ({ data }: ProjectSLider) => {
 
   return (
     <div className="relative flex flex-col gap-8 h-full">
+      <div className="bg-gradient-to-b from-transparent to-Black-e-black-500 absolute bottom-0 z-[9] w-full h-1/2"></div>
       <div
         className={cn(containerClasses, "relative min-h-[650px] w-full h-full")}
       >
@@ -69,7 +70,7 @@ const ProjectPageSLider = ({ data }: ProjectSLider) => {
                     />
                   )}
                 </div>
-                <div className="bbbg-text py-20 px-10 max-w-[650px] absolute left-0 z-[99] bottom-20 text-white ">
+                <div className="bbbg-text py-2 px-10 max-w-[650px] absolute left-0 z-[99] bottom-20 text-white ">
                   <h1 className={` font-medium leading-[120%] slide-text`}>
                     {data.name}
                   </h1>

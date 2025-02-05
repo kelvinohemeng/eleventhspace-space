@@ -14,7 +14,7 @@ const ReactLoader = () => {
         activateScrollFunction();
       },
     });
-    document.body.className = "fixed";
+    // document.body.className = "fixed";
 
     const activateScrollFunction = () => {
       document.body.className = "!block";
