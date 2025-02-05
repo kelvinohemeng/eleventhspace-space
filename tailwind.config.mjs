@@ -57,6 +57,9 @@ export default {
           "purple-1": "#B467FF",
           "text-dark": "#e6e6e6",
         },
+        text: {
+          white: "#d4d4d4",
+        },
       },
       fontSize: {
         "e-xs": "0.75rem",

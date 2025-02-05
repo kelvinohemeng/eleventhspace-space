@@ -92,7 +92,7 @@ export const ServiceSectionReact = () => {
                 />
                 <SplitWordAnim
                   text={`Elevent Space is a creative agency redefining the boundaries of everyday brand experiences. We specialize in crafting unique, engaging, and brand-centered solutions that resonate deeply with our clients and their target audiences.`}
-                  className={"text-e-7xl dark:text-Black-e-black-50"}
+                  className={"text-e-7xl dark:text-text-white"}
                 />
               </div>
             </div>
@@ -102,7 +102,7 @@ export const ServiceSectionReact = () => {
                 {services.map((service, index) => (
                   <button
                     onClick={() => setCurrentService(service)}
-                    className={`${"hover:bg-[#471D86] hover:text-white hover:border-none transition-all duration-300 "} border border-black dark:border-others-text-dark dark:text-others-text-dark text-e-lg md:text-e-2xl px-3 py-2 rounded-full text-black`}
+                    className={`${"hover:bg-[#471D86] hover:text-white hover:border-[#471D86] dark:hover:border-text-white transition-all duration-300 "} border border-black dark:border-text-white dark:hover:border-[#471D86] dark:text-text-white text-e-lg md:text-e-2xl px-3 py-1 rounded-full text-black`}
                   >
                     {service.title}
                   </button>

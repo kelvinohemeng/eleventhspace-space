@@ -11,7 +11,6 @@ const SVGGallery = () => {
       duration: 12,
       ease: "none",
       scrollTrigger: {
-        trigger: ".about",
         scrub: 1,
       },
     });
@@ -289,8 +288,8 @@ const SVGGallery = () => {
   ];
 
   return (
-    <div className="wrapper lg:max-w-[720px] w-full overflow-hidden">
-      <div className="ssvgs flex w-fit gap-4">
+    <div className="relative w-full h-[250px] overflow-hidden">
+      <div className="absolute ssvgs flex w-fit gap-4">
         {SVGS.map(({ id, element }) => (
           <div key={id} className="w-full aspect-square">
             {element}

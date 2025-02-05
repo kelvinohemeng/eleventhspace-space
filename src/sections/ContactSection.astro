@@ -54,10 +54,22 @@ const containerClasses = containerClass(true);
 
       <div class="w-full flex flex-col justify-center">
         <div class="space-y-11 flex flex-col">
-          <form action="" class="flex flex-col gap-4 contact_form">
+          <form
+            action="https://api.web3forms.com/submit"
+            method="POST"
+            id="form"
+            class="flex flex-col gap-4 contact_form"
+          >
+            <input
+              type="hidden"
+              name="access_key"
+              value="cf9976a4-cd93-4d2c-9d95-c960c58a74ad"
+            />
+
             <label for="name">
               <div id="name" class="border-[#FE8B26] border-b">
                 <input
+                  name="Name"
                   type="text"
                   placeholder="What is your name?"
                   class="appearance-none focus:bg-transparent placeholder:text-e-4xl w-full p-4 bg-transparent text-[#FE8B26] focus:outline-none focus:border-none placeholder:text-others-text-dark"
@@ -67,7 +79,9 @@ const containerClasses = containerClass(true);
             <label for="Email">
               <div id="email" class="border-[#FE8B26] border-b">
                 <input
+                  name="Email"
                   type="text"
+                  required
                   placeholder="Please provide your email"
                   class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b text-[#FE8B26] border-none focus:outline-none placeholder:text-others-text-dark"
                 />
@@ -77,7 +91,9 @@ const containerClasses = containerClass(true);
             <label for="projectType">
               <div id="projectType" class="border-[#FE8B26] border-b">
                 <input
+                  name="Project Type"
                   type="text"
+                  required
                   placeholder="What type of project do you need"
                   class="placeholder:text-e-4xl w-full p-4 bg-transparent border-b border-[#FE8B26] text-[#FE8B26] focus:border-none border-none focus:outline-none focus:border-2 placeholder:text-others-text-dark"
                 />
@@ -88,12 +104,14 @@ const containerClasses = containerClass(true);
               <div id="message" class="border-[#FE8B26] border-b">
                 <textarea
                   name="message"
+                  required
                   placeholder="Anything you want us to know?"
                   class="placeholder:text-e-4xl w-full p-4 bg-transparent border-[#FE8B26] text-[#FE8B26] border-none focus:outline-none focus:border-2 min-h-[250px] resize-none placeholder:text-others-text-dark"
                 ></textarea>
               </div>
             </label>
             <div class="mt-4"><Button title="Submit" href="/" /></div>
+            <div id="result"></div>
           </form>
         </div>
       </div>
@@ -101,10 +119,45 @@ const containerClasses = containerClass(true);
   </div>
 </div>
 
-<script>
-  const form = document.querySelector(".contact_form"),
-    name = document.querySelector("#name"),
-    email = document.querySelector("#Email"),
-    projectType = document.querySelector("#projectType"),
-    message = document.querySelector("#message");
+<script is:inline>
+  const form = document.getElementById("#form");
+  const result = document.getElementById("#result");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    result.innerHTML = "Please wait...";
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: json,
+    })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          result.innerHTML = json.message;
+        } else {
+          console.log(response);
+          result.innerHTML = json.message;
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        result.innerHTML = "Something went wrong!";
+      })
+      .then(function () {
+        form.reset();
+        setTimeout(() => {
+          result.style.display = "none";
+        }, 3000);
+      });
+  });
 </script>

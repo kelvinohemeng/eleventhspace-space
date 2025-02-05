@@ -10,15 +10,7 @@ const ReactLoader = () => {
   useEffect(() => {
     const pTL = gsap.timeline({
       delay: 0.5,
-      onComplete: () => {
-        activateScrollFunction();
-      },
     });
-    // document.body.className = "fixed";
-
-    const activateScrollFunction = () => {
-      document.body.className = "!block";
-    };
     pTL.to(".loaders_p", {
       xPercent: 110,
       duration: 1,

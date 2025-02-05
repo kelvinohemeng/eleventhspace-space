@@ -4,103 +4,55 @@ import Scene from "./react/Scene";
 const { hasPreloader } = Astro.props;
 ---
 
-<div
-  class={`${hasPreloader ? "block" : "hidden"} fixed inset-0 z-50 pointer-events-none`}
->
-  <div class="absolute inset-0 bg-black bg"></div>
-  <h1
-    class="text-white one absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-  >
-    At the great of Accra
-  </h1>
-  <h1
-    class="text-white two absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-  >
-    We are eleventhspace
-  </h1>
-  <h1
-    class="text-white three absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-  >
-    Welcome
-  </h1>
-
-  <!-- <Scene client:load /> -->
+<div class="fixed inset-0 z-[9999] pointer-events-none flex">
+  {
+    /* <div class="seq_p_1 absolute w-full h-full flex items-center justify-center bg-Black-e-black-500 ">
+        <div
+          class={cn(
+            containerClasses,
+            "w-full flex flex-col justify-end pb-32"
+          )}
+        >
+          <div class="overflow-hidden">
+            <h1 class="el text-others-purple-1">Hola</h1>
+          </div>
+          <p class="text-white">LOADING...</p>
+        </div>
+      </div> */
+  }
+  <div class="overflow-hidden w-full">
+    <div class="loaders_p w-full h-full bg-Black-e-black-500"></div>
+  </div>
+  <div class="overflow-hidden w-full">
+    <div class="loaders_p w-full h-full bg-Black-e-black-500"></div>
+  </div>
+  <div class="overflow-hidden w-full">
+    <div class="loaders_p w-full h-full bg-Black-e-black-500"></div>
+  </div>
+  <div class="overflow-hidden w-full">
+    <div class="loaders_p w-full h-full bg-Black-e-black-500"></div>
+  </div>
+  <div class="overflow-hidden w-full">
+    <div class="loaders_p w-full h-full bg-Black-e-black-500"></div>
+  </div>
 </div>
 
 <script>
-  type Timeline = {
-    target: string;
-    // endDuration?: number;
-    durationPerSequence?: number;
-    delay: number;
-  };
   import gsap from "gsap";
+  const pTL = gsap.timeline({
+    delay: 0.5,
+    // onComplete: () => {
+    //   activateScrollFunction();
+    // },
+  });
 
-  const sequenceList = [
-    { target: ".one", delay: 0 },
-    { target: ".two", delay: 1.8 },
-    { target: ".three", delay: 3.6 },
-  ];
-  const durationPerSequence = 1.8;
-  const bgDelay = sequenceList.length * durationPerSequence;
-
-  //delay is equal to the durationPerSequence * number of sequences
-  const preTlbg = gsap.timeline({ delay: bgDelay });
-
-  const sequence = ({ ...props }: Timeline) => {
-    const preTl = gsap.timeline({ delay: props.delay });
-
-    const defaultDuration =
-      props.durationPerSequence && props.durationPerSequence / 3;
-    preTl
-      .from(props.target, {
-        y: 100,
-        opacity: 0,
-        duration: defaultDuration || 1,
-        ease: "power4.out",
-      })
-      .to(props.target, {
-        y: 0,
-        opacity: 1,
-        duration: defaultDuration || 1,
-        ease: "power4.out",
-      })
-      .to(props.target, {
-        y: -100,
-        opacity: 0,
-        duration: defaultDuration || 1,
-        ease: "power4.in",
-      });
-  };
-  preTlbg
-    .from(".bg", {
-      opacity: 1,
-      duration: 1,
-      ease: "power4.out",
-    })
-    .to(".bg", {
-      opacity: 0,
-      duration: 1,
-
-      ease: "power4.out",
-    });
-
-  sequenceList.map((seq, index) =>
-    sequence({
-      target: seq.target,
-      delay: seq.delay,
-      durationPerSequence: 1.8,
-    })
-  );
-
-  //   sequence({
-  //     target: ".two",
-  //     delay: 3,
-  //     durationPerSequence: 1.8,
-  //   });
-  //   sequence({
-  //     target: ".three",
-  //     delay: 6,
-  //     durationPerSequence: 1.8,
-  //   });
+  pTL.to(".loaders_p", {
+    xPercent: 110,
+    duration: 1,
+    stagger: {
+      amount: 0.2,
+      from: "start",
+    },
+    ease: "power4.in",
+  });
 </script>
