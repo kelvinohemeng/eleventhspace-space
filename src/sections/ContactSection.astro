@@ -54,7 +54,7 @@ const containerClasses = containerClass(true);
 
       <div class="w-full flex flex-col justify-center">
         <div class="space-y-11 flex flex-col">
-          <form action="" class="flex flex-col gap-4">
+          <form action="" class="flex flex-col gap-4 contact_form">
             <label for="name">
               <div id="name" class="border-[#FE8B26] border-b">
                 <input
@@ -65,7 +65,7 @@ const containerClasses = containerClass(true);
               </div>
             </label>
             <label for="Email">
-              <div id="Email" class="border-[#FE8B26] border-b">
+              <div id="email" class="border-[#FE8B26] border-b">
                 <input
                   type="text"
                   placeholder="Please provide your email"
@@ -100,3 +100,11 @@ const containerClasses = containerClass(true);
     </div>
   </div>
 </div>
+
+<script>
+  const form = document.querySelector(".contact_form"),
+    name = document.querySelector("#name"),
+    email = document.querySelector("#Email"),
+    projectType = document.querySelector("#projectType"),
+    message = document.querySelector("#message");
+</script>
