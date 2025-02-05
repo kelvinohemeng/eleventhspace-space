@@ -60,12 +60,19 @@ const containerClasses = containerClass(true);
             id="form"
             class="flex flex-col gap-4 contact_form"
           >
+            <!-- FORM PREVIEW CUSTOMIZATION -->
+            <input
+              type="hidden"
+              name="from_name"
+              value="Message from Website"
+            />
             <input
               type="hidden"
               name="access_key"
               value="cf9976a4-cd93-4d2c-9d95-c960c58a74ad"
             />
 
+            <!-- REST OF THE FORM -->
             <label for="name">
               <div id="name" class="border-[#FE8B26] border-b">
                 <input
