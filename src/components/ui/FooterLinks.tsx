@@ -11,10 +11,8 @@ export const FooterLinks = ({ linkName, href }: FooterLink) => {
   const linkRef2 = useRef<HTMLDivElement>(null);
 
   return (
-    <div className="overflow-hidden dark:text-white ">
-      <a href={href} className="footer-link cursor-pointer">
-        <h6 ref={linkRef1}>{linkName}</h6>
-      </a>
-    </div>
+    <a href={href} className="footer-link cursor-pointer">
+      <h6 ref={linkRef1}>{linkName}</h6>
+    </a>
   );
 };
